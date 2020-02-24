@@ -1,0 +1,11 @@
+node_modules
+*.sqlite
+
+# application environment file
+.env
+
+# Exclude plugin directories
+plugins/*
+
+# Make sute to keep the base plugins directory
+!plugins/.gitkeep 
