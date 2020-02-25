@@ -3,6 +3,7 @@
 const Hapi = require('@hapi/hapi');
 const Schwifty = require('schwifty');
 const plugins = require('./app/plugins');
+const admin = require('@ciculatejs/admin');
 
 // require('test-repo');
 
@@ -31,7 +32,7 @@ const start = async () => {
     await server.register([require('./app/models')]);
     await server.register([require('./app/controllers')]);
     await plugins(server);
-    // await routes(server);
+    await admin;
     await server.start();
 
     console.log('Server running at %s', server.info.uri);

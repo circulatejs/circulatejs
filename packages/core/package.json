@@ -12,7 +12,7 @@
     "license": "ISC",
     "dependencies": {
         "@hapi/hapi": "^19.0.5",
-        "@ciculatejs/admin": "git+https://git@github.com/circulatejs/admin",
+        "@ciculatejs/admin": "../admin",
         "dotenv": "^8.2.0",
         "glob": "^7.1.6",
         "knex": "^0.20.8",
