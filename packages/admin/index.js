@@ -1,23 +1,23 @@
-const { exec } = require('child_process')
+const path = require('path')
+const fs = require('fs-extra')
+const cwd = process.cwd()
+
+const Service = require('@vue/cli-service');
+const service = new Service(cwd);
+
+const adminPath = path.join(cwd, '/node_modules/@circulatejs/core', '/node_modules/@circulatejs/admin', '/src');
 
 async function buildAdmin() {
-  return await new Promise((resolve, reject) => {
-    exec(
-      __dirname + '/node_modules/.bin/vue-cli-service build',
-      (error, stdout, stderr) => {
-        if (error) {
-          reject(error)
-        }
-        resolve(stdout, stderr)
-      }
-    )
-  })
+  try {
+    await fs.copy(adminPath, cwd + '/src')
+    console.log('Temp directory created')
+    await service.init('production');
+    await service.run('build').then(() => {
+      console.log('Admin built');
+    });
+  } catch (err) {
+    console.error(err)
+  }
 }
 
-module.exports = buildAdmin()
-  .then(info => {
-    console.log(info)
-  })
-  .catch(error => {
-    console.error(error)
-  })
+buildAdmin()
