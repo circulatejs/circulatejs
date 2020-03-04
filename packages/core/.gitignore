@@ -8,4 +8,4 @@ node_modules
 plugins/*
 
 # Make sute to keep the base plugins directory
-!plugins/.gitkeep 
+!plugins/.gitkeep

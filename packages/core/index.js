@@ -3,7 +3,7 @@
 const Hapi = require('@hapi/hapi');
 const Schwifty = require('schwifty');
 const plugins = require('./app/plugins');
-const admin = require('@ciculatejs/admin');
+const admin = require('@circulatejs/admin');
 
 // require('test-repo');
 
@@ -29,10 +29,31 @@ const start = async () => {
             }
         }
     });
+    await server.register(require('inert'));
     await server.register([require('./app/models')]);
     await server.register([require('./app/controllers')]);
     await plugins(server);
     await admin;
+
+    // server.route({
+    //     method: 'GET',
+    //     path: '/admin',
+    //     handler: ((request, h) => {
+    //         return h.file('./admin/index.html');
+    //     })
+    // });
+
+    server.route({
+        method: 'GET',
+        path: '/admin/{param*}',
+        handler: {
+            directory: {
+                path: './admin/',
+                index: ['index.html']
+            }
+        }
+    });
+
     await server.start();
 
     console.log('Server running at %s', server.info.uri);
