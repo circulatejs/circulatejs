@@ -5,7 +5,7 @@ const cwd = process.cwd()
 const Service = require('@vue/cli-service');
 const service = new Service(cwd);
 
-const adminPath = path.join(cwd, '/node_modules/@circulatejs/core', '/node_modules/@circulatejs/admin', '/src');
+const adminPath = path.join(cwd, '/node_modules/@circulatejs/admin', '/src');
 
 async function buildAdmin() {
   try {
