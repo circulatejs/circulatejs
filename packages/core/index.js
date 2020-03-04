@@ -29,7 +29,7 @@ const start = async () => {
             }
         }
     });
-    await server.register(require('inert'));
+    await server.register(require('@hapi/inert'));
     await server.register([require('./app/models')]);
     await server.register([require('./app/controllers')]);
     await plugins(server);
