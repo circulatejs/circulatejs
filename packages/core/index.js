@@ -5,8 +5,6 @@ const Schwifty = require('schwifty');
 const plugins = require('./app/plugins');
 const admin = require('@circulatejs/admin');
 
-// require('test-repo');
-
 require('dotenv').config();
 
 const start = async () => {
@@ -35,17 +33,9 @@ const start = async () => {
     await plugins(server);
     await admin;
 
-    // server.route({
-    //     method: 'GET',
-    //     path: '/admin',
-    //     handler: ((request, h) => {
-    //         return h.file('./admin/index.html');
-    //     })
-    // });
-
     server.route({
         method: 'GET',
-        path: '/admin/{param*}',
+        path: process.env.ADMIN_LOCATION + '/{param*}',
         handler: {
             directory: {
                 path: './admin/',
