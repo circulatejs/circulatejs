@@ -14,6 +14,7 @@ async function buildAdmin() {
     await service.init('production');
     await service.run('build').then(() => {
       console.log('Admin built');
+      fs.removeSync(cwd + '/src')
     });
   } catch (err) {
     console.error(err)
