@@ -3,7 +3,6 @@
 const Hapi = require('@hapi/hapi');
 const Schwifty = require('schwifty');
 const plugins = require('./app/plugins');
-const admin = require('@circulatejs/admin');
 
 require('dotenv').config();
 
@@ -31,22 +30,11 @@ const start = async () => {
     await server.register([require('./app/models')]);
     await server.register([require('./app/controllers')]);
     await plugins(server);
-    await admin;
-
-    server.route({
-        method: 'GET',
-        path: process.env.ADMIN_LOCATION + '/{param*}',
-        handler: {
-            directory: {
-                path: './admin/',
-                index: ['index.html']
-            }
-        }
-    });
+    await server.register(require('./app/admin'));
 
     await server.start();
 
-    console.log('Server running at %s', server.info.uri);
+    console.log('Your CirculateJS server is running at %s', server.info.uri);
 };
 
 process.on('unhandledRejection', err => {
