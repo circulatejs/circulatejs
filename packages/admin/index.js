@@ -7,18 +7,24 @@ const service = new Service(cwd);
 
 const adminPath = path.join(cwd, '/node_modules/@circulatejs/admin', '/src');
 
-async function buildAdmin() {
-  try {
-    await fs.copy(adminPath, cwd + '/src')
-    console.log('Temp directory created')
-    await service.init('production');
-    await service.run('build').then(() => {
-      console.log('Admin built');
-      fs.removeSync(cwd + '/src')
-    });
-  } catch (err) {
-    console.error(err)
-  }
+const buildAdmin = async () => {
+  return await new Promise((resolve, reject) => {
+    try {
+      resolve(runBuild())
+    } catch (err) {
+      reject(console.error(err))
+    }
+  })
 }
 
-buildAdmin()
+async function runBuild() {
+  await fs.copy(adminPath, cwd + '/src')
+  console.log('Temp directory created')
+  await service.init('production');
+  await service.run('build').then(() => {
+    console.log('Admin build complete');
+    // fs.removeSync(cwd + '/src')
+  });
+}
+
+module.exports = buildAdmin()
