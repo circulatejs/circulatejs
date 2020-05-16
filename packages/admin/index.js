@@ -1,30 +1,18 @@
-const path = require('path')
-const fs = require('fs-extra')
-const cwd = process.cwd()
+const webpack = require('webpack');
+const config = require(__dirname + '/webpack.config')
 
-const Service = require('@vue/cli-service');
-const service = new Service(cwd);
-
-const adminPath = path.join(cwd, '/node_modules/@circulatejs/admin', '/src');
-
-const buildAdmin = async () => {
-  return await new Promise((resolve, reject) => {
-    try {
-      resolve(runBuild())
-    } catch (err) {
-      reject(console.error(err))
+function build() {
+  console.log('Building Admin')
+  webpack(config, (err, stats) => { // Stats Object
+    if (err || stats.hasErrors()) {
+      // Handle errors here
     }
+    console.log(stats.toString({
+      chunks: false,  // Makes the build much quieter
+      colors: true    // Shows colors in the console
+    }));
+    console.log('Admin build complete.')
   })
 }
 
-async function runBuild() {
-  await fs.copy(adminPath, cwd + '/src')
-  console.log('Temp directory created')
-  await service.init('production');
-  await service.run('build').then(() => {
-    console.log('Admin build complete');
-    // fs.removeSync(cwd + '/src')
-  });
-}
-
-module.exports = buildAdmin()
+module.exports = () => { build() }

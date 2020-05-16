@@ -2,7 +2,7 @@
     <div class="menu">
         <div class="upper-menu"></div>
         <div class="menu-link__wrap">
-            <router-link v-for="(menuItem, index) in getMenuItems" :key="index" :to="menuItem.path">
+            <router-link v-for="(menuItem, index) in menuItems" :key="index" :to="menuItem.path">
                 {{ menuItem.name }}
             </router-link>
         </div>
@@ -14,22 +14,30 @@ import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'Menu',
-  computed: {
-      ...mapGetters(['getMenuItems'])
-  },
-  methods: {
-      ...mapMutations(['addMenuItem'])
+//   computed: {
+//       ...mapGetters(['getMenuItems'])
+//   },
+//   methods: {
+//       ...mapMutations(['addMenuItem'])
+//   },
+  data() {
+      return {
+          menuItems: []
+      }
   },
   mounted() {
-      this.addMenuItem({
-          name: 'Home',
-          path: '/'
+      this.$router.options.routes.forEach(route => {
+          this.menuItems.push(route)
       })
+    //   this.addMenuItem({
+    //       name: 'Home',
+    //       path: '/'
+    //   })
 
-      this.addMenuItem({
-          name: 'Another',
-          path: '/some-other'
-      })
+    //   this.addMenuItem({
+    //       name: 'Another',
+    //       path: '/some-other'
+    //   })
   }
 }
 </script>

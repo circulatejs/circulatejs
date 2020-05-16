@@ -1,5 +1,5 @@
 <template>
-  <div class="admin">
+  <div class="app">
     <Menu class="menu"></Menu>
     <div class="content">
       <h1>Hello There!</h1>
@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Menu from "./components/Menu";
+import Menu from './components/Menu.vue';
 export default {
-  name: 'Admin',
+  name: 'App',
   components: {
     Menu
   }
@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 
-.admin {
+.app {
   display: flex;
 }
 .menu {
