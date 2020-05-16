@@ -1,4 +1,22 @@
-const adminBuild = require('@circulatejs/admin');
+const admin = require('@circulatejs/admin');
+
+// const adminPaths = glob.sync('plugins/admin/*');
+// const adminPages = [];
+
+// // const adminPagesToLoad = async () => {
+//     adminPaths.forEach(adminPage => {
+//         console.log(adminPage)
+//         adminPages.push(`import ${adminPage}`);
+//     });
+// // };
+
+// // adminPagesToLoad()
+
+// console.log(adminPages)
+
+console.log(admin)
+
+admin()
 
 exports.plugin = {
     name: 'admin',
@@ -14,6 +32,8 @@ exports.plugin = {
             }
         });
 
-        await adminBuild
+        // await admin.importAdminPages(adminPagesToLoad)
+
+        // await adminBuild
     }
 };

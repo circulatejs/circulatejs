@@ -7,7 +7,7 @@ const plugins = [];
 
 const pluginsLoad = async server => {
     pluginPaths.forEach(plugin => {
-        plugins.push(require(`../${plugin}`));
+        plugins.push(require(`${process.cwd()}/${plugin}`));
     });
 
     await server.register(plugins, {
