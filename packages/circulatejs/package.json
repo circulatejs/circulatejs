@@ -2,7 +2,7 @@
     "name": "core",
     "version": "0.1.0",
     "description": "",
-    "main": "index.js",
+    "main": "bootstrap.js",
     "scripts": {
         "start": "node bootstrap.js",
         "dev": "nodemon bootstrap.js",
@@ -11,7 +11,6 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
-        "@circulatejs/core": "git+https://git@github.com/circulatejs/core",
         "dotenv": "^8.2.0"
     },
     "devDependencies": {
