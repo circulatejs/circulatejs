@@ -1,6 +1,7 @@
 {
-  "name": "root",
+  "name": "circulatejs",
   "private": true,
+  "workspaces": true,
   "devDependencies": {
     "lerna": "^3.21.0"
   }
