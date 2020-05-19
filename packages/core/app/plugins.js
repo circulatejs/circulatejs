@@ -2,12 +2,15 @@ const glob = require('glob');
 
 ('use strict');
 
-const pluginPaths = glob.sync('plugins/*');
+const pluginPaths = glob.sync(`${process.cwd()}/plugins/*`);
 const plugins = [];
+
+// console.log(pluginPaths)
 
 const pluginsLoad = async server => {
     pluginPaths.forEach(plugin => {
-        plugins.push(require(`${process.cwd()}/${plugin}`));
+        // console.log(plugin)
+        // plugins.push(require(`${plugin}`));
     });
 
     await server.register(plugins, {

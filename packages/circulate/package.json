@@ -1,5 +1,5 @@
 {
-    "name": "core",
+    "name": "@circulatejs/circulate",
     "version": "0.1.0",
     "description": "",
     "main": "bootstrap.js",
@@ -11,6 +11,7 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
+        "@circulatejs/core": "^0.1.0",
         "dotenv": "^8.2.0"
     },
     "devDependencies": {

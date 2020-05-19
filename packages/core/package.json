@@ -1,5 +1,5 @@
 {
-    "name": "core",
+    "name": "@circulatejs/core",
     "version": "0.1.0",
     "description": "",
     "main": "index.js",
@@ -11,7 +11,8 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
-        "@circulatejs/admin": "git+https://git@github.com/circulatejs/admin",
+        "@circulatejs/admin": "^0.1.0",
+        "@circulatejs/circulate": "^0.1.0",
         "@hapi/hapi": "^19.1.0",
         "@hapi/inert": "^6.0.1",
         "dotenv": "^8.2.0",
