@@ -6,6 +6,9 @@ const plugins = require('./app/plugins');
 
 require('dotenv').config();
 
+// Clear the console output when we start the server
+console.clear()
+
 const start = async () => {
     const serverOptions = {
         port: process.env.PORT,
@@ -26,11 +29,16 @@ const start = async () => {
             }
         }
     });
-    await server.register(require('@hapi/inert'));
-    await server.register([require('./app/models')]);
-    await server.register([require('./app/controllers')]);
+    // await server.register(require('@hapi/inert'));
+    await server.register([
+        require('@hapi/inert'),
+        require('./app/models'),
+        require('./app/controllers'),
+        require('./app/admin')
+    ]);
+    // await server.register([require('./app/controllers')]);
     await plugins(server);
-    await server.register(require('./app/admin'));
+    // await server.register(require('./app/admin'));
 
     await server.start();
 

@@ -3,23 +3,15 @@
         <div class="upper-menu"></div>
         <div class="menu-link__wrap">
             <router-link v-for="(menuItem, index) in menuItems" :key="index" :to="menuItem.path">
-                {{ menuItem.name }}
+                {{ menuItem.menu }}
             </router-link>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
-
 export default {
   name: 'Menu',
-//   computed: {
-//       ...mapGetters(['getMenuItems'])
-//   },
-//   methods: {
-//       ...mapMutations(['addMenuItem'])
-//   },
   data() {
       return {
           menuItems: []
@@ -29,15 +21,6 @@ export default {
       this.$router.options.routes.forEach(route => {
           this.menuItems.push(route)
       })
-    //   this.addMenuItem({
-    //       name: 'Home',
-    //       path: '/'
-    //   })
-
-    //   this.addMenuItem({
-    //       name: 'Another',
-    //       path: '/some-other'
-    //   })
   }
 }
 </script>

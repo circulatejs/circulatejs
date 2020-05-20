@@ -5,43 +5,54 @@ const colors = require('colors/safe');
 
 const config = require(__dirname + '/webpack.config')
 const compiler = webpack(config)
-const Progress = new cliProgress.SingleBar({
-  format: 'Building Admin ' + colors.green('{bar}') + ' {percentage}%',
-  clearOnComplete: true
+const ProgressBar = new cliProgress.SingleBar({
+  format: 'Building Admin ' + colors.blue('{bar}') + ' {percentage}% {msg}',
+  clearOnComplete: true,
+  hideCursor: true
 }, cliProgress.Presets.shades_classic)
+const admin = {}
 
-compiler.apply(new ProgressPlugin((percent, msg) => {
-  let percentage = percent * 100
-  // console.log((percent * 100) +'%', msg)
-  Progress.update(percentage)
+let percentage = 0
+let message = ''
+
+new ProgressPlugin((percent, msg) => {
+  percentage = percent * 100
+  message = msg ? '| ' + msg : ''
+
+  ProgressBar.update(percentage, {
+    msg: message
+  })
+
   if (percentage === 100) {
-    setTimeout(() => {
-      Progress.stop()
-      console.clear()
-      console.log('Admin build complete')
-    }, 100)
+    ProgressBar.stop()
   }
-}))
+}).apply(compiler)
 
-function build() {
-  Progress.start(100, 0)
-  // webpack(config, (err, stats) => { // Stats Object
-  //   if (err || stats.hasErrors()) {
-  //     // Handle errors here
-  //   }
-  //   // if ()
-  //   console.log(stats.toString({
-  //     chunks: false,  // Makes the build much quieter
-  //     colors: true    // Shows colors in the console
-  //   }));
-  //   // stats.toJson('minimal');
-  //   console.log('Admin build complete.')
-  // })
-  compiler.run((err, stats) => {
-    if (err || stats.hasErrors()) {
-      console.log('There was an error building admin')
-    }
+admin.buildAdmin = async () => {
+  ProgressBar.start(100, 0, {
+    msg: ''
+  })
+
+  return await new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err || stats.hasErrors()) {
+        reject(setErrors(err))
+      } else {
+        resolve(setAdminComplete())
+      }
+    })
   })
 }
 
-module.exports = () => { build() }
+function setAdminComplete() {
+  if (compiler.hooks.done) {
+    console.log(colors.blue('Admin build complete\n'))
+  }
+}
+function setErrors(err) {
+  console.log(colors.red('There was an error building admin\n'))
+  console.log(err)
+  console.log('')
+}
+
+module.exports = admin

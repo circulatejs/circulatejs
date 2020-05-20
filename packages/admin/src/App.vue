@@ -2,7 +2,6 @@
   <div class="app">
     <Menu class="menu"></Menu>
     <div class="content">
-      <h1>Hello There!</h1>
       <router-view></router-view>
     </div>
   </div>

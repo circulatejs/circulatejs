@@ -8,10 +8,6 @@ const workingDir = process.cwd()
 
 const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins');
 
-console.log(pluginsPath)
-
-// console.log(JSON.stringify(path.relative('./', pluginsPath)))
-
 module.exports = {
   mode: 'production',
   entry: `${adminPath}/src/main.js`,
