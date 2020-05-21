@@ -1,6 +1,7 @@
 const admin = require('@circulatejs/admin');
+const settings = require('./settings')
 
-const adminPath = process.env.ADMIN_LOCATION || '/admin'
+const adminPath = settings.ADMIN_LOCATION
 
 exports.plugin = {
     name: 'admin',

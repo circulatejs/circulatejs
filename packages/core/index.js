@@ -3,16 +3,15 @@
 const Hapi = require('@hapi/hapi');
 const Schwifty = require('schwifty');
 const plugins = require('./app/plugins');
-
-require('dotenv').config();
+const settings = require('./app/settings')
 
 // Clear the console output when we start the server
 console.clear()
 
 const start = async () => {
     const serverOptions = {
-        port: process.env.PORT,
-        host: process.env.HOST
+        port: settings.PORT,
+        host: settings.HOST
     };
 
     const server = Hapi.server(serverOptions);
@@ -24,7 +23,7 @@ const start = async () => {
                 client: 'sqlite3',
                 useNullAsDefault: true,
                 connection: {
-                    filename: process.env.DB_NAME + '.sqlite'
+                    filename: settings.DB_NAME + '.sqlite'
                 }
             }
         }
