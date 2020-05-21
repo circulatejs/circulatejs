@@ -31,5 +31,8 @@
         "core": "core",
         "controllers": "/Controllers"
     },
+    "nodemonConfig": {
+        "ignore": ["admin/*"]
+    },
     "gitHead": "5bd5956b8a6101bf0a462d53ba012d3ca6c7fb3a"
 }
