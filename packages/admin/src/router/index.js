@@ -27,7 +27,7 @@ function importAll(r) {
 
 const router = new VueRouter({
   mode: 'history',
-  base: '/admin/',
+  base: `${ADMIN_LOCATION}/`,
   routes
 })
 

@@ -2,6 +2,7 @@
 
 const Hapi = require('@hapi/hapi');
 const Schwifty = require('schwifty');
+const colors = require('colors/safe');
 const plugins = require('./app/plugins');
 const settings = require('./app/settings')
 
@@ -28,20 +29,19 @@ const start = async () => {
             }
         }
     });
-    // await server.register(require('@hapi/inert'));
     await server.register([
         require('@hapi/inert'),
         require('./app/models'),
         require('./app/controllers'),
         require('./app/admin')
     ]);
-    // await server.register([require('./app/controllers')]);
     await plugins(server);
-    // await server.register(require('./app/admin'));
 
     await server.start();
 
     console.log('Your CirculateJS server is running at %s', server.info.uri);
+    console.log('');
+    console.log(colors.blue('Your CirculateJS Admin is running at %s'), server.info.uri + settings.ADMIN_LOCATION);
 };
 
 process.on('unhandledRejection', err => {

@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+require('dotenv').config()
+
 const adminPath = __dirname
 const workingDir = process.cwd()
 
@@ -20,7 +22,31 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, use: 'babel-loader' },
-      { test: /\.vue$/, use: 'vue-loader' },
+      { test: /\.vue$/,
+        use: {
+          loader: 'vue-loader',
+          // options: {
+          //   postcss: [require('postcss-cssnext')()]
+          // }
+        }
+      },
+      {
+        test: /\.postcss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              indent: 'postcss',
+              plugins: [
+                require('tailwindcss'),
+                require('autoprefixer')
+              ]
+            }
+          }
+        ]
+      },
       { test: /\.css$/,
         use: [
           {
@@ -30,7 +56,10 @@ module.exports = {
             loader: 'vue-style-loader'
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
           },
           {
             loader: 'postcss-loader',
@@ -51,6 +80,9 @@ module.exports = {
       template: `${adminPath}/src/index.html`,
     }),
     new VueLoaderPlugin(),
-    new webpack.DefinePlugin({ ADMIN_PLUGINS: JSON.stringify(pluginsPath) })
+    new webpack.DefinePlugin({
+      ADMIN_PLUGINS: JSON.stringify(pluginsPath),
+      ADMIN_LOCATION: JSON.stringify(process.env.ADMIN_LOCATION || '/admin')
+    })
   ]
 };

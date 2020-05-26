@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Menu class="menu"></Menu>
+    <Menu></Menu>
     <div class="content">
       <router-view></router-view>
     </div>
@@ -21,9 +21,6 @@ export default {
 
 .app {
   display: flex;
-}
-.menu {
-  width: 300px;
 }
 .content {
   padding: 65px 15px 15px;

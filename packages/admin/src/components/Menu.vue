@@ -1,6 +1,8 @@
 <template>
     <div class="menu">
-        <div class="upper-menu"></div>
+        <div class="upper-menu">
+            <div class="menu-button" @click="setMobileMenu"></div>
+        </div>
         <div class="menu-link__wrap">
             <router-link v-for="(menuItem, index) in menuItems" :key="index" :to="menuItem.path">
                 {{ menuItem.menu }}
@@ -11,22 +13,30 @@
 
 <script>
 export default {
-  name: 'Menu',
-  data() {
-      return {
-          menuItems: []
-      }
-  },
-  mounted() {
-      this.$router.options.routes.forEach(route => {
-          this.menuItems.push(route)
-      })
-  }
+    name: 'Menu',
+    data() {
+        return {
+            menuItems: [],
+            mobileMenuActive: false
+        }
+    },
+    mounted() {
+        this.$router.options.routes.forEach(route => {
+            this.menuItems.push(route)
+        })
+    },
+    methods: {
+        setMobileMenu() {
+            this.mobileMenuActive ? false : true
+        }
+    }
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .menu {
+    display: none;
+    width: 300px;
     height: 100vh;
     padding: 70px 15px 15px;
     background: rgb(35, 97, 211);
@@ -48,5 +58,16 @@ export default {
 .menu-link__wrap {
     display: flex;
     flex-direction: column;
+}
+.menu-button {
+    color:aqua;
+    height: 30px;
+    width: 30px;
+}
+
+@screen md {
+    .menu {
+        display: block;
+    }
 }
 </style>
