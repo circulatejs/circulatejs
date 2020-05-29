@@ -1,0 +1,13 @@
+{
+  "name": "@circulatejs/cli",
+  "version": "0.1.0",
+  "description": "CirculateJS CLI",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "circulate": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^5.1.0"
+  }
+}
