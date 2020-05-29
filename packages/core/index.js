@@ -7,7 +7,7 @@ const plugins = require('./app/plugins');
 const settings = require('./app/settings')
 
 // Clear the console output when we start the server
-console.clear()
+// console.clear()
 
 const start = async () => {
     const serverOptions = {

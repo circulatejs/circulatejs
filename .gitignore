@@ -1,3 +1,6 @@
 node_modules
 lerna-debug.log
 yarn-error.log
+
+# ignore generated Admin files
+.admin/

@@ -14,7 +14,7 @@ module.exports = {
   mode: 'production',
   entry: `${adminPath}/src/main.js`,
   output: {
-    path: `${workingDir}/admin`
+    path: `${workingDir}/.admin`
   },
   stats: {
     assets: false

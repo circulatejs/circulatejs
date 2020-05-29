@@ -21,7 +21,7 @@ exports.plugin = {
             path: `${adminPath}/{param*}`,
             handler: {
                 directory: {
-                    path: './admin',
+                    path: './.admin',
                     index: ['index.html'],
                     redirectToSlash: true
                 }
