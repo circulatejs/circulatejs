@@ -1,0 +1,8 @@
+HOST='localhost'
+PORT=3000
+DB_NAME='circulatejs'
+
+ADMIN_LOCATION='/admin'
+API_PATH='/api'
+
+PLUGINS_PATH='/<%= pluginsPath %>'
