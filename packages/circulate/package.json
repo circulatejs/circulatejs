@@ -11,8 +11,7 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
-        "@circulatejs/core": "^0.1.5",
-        "dotenv": "^8.2.0"
+        "@circulatejs/core": "^0.1.5"
     },
     "devDependencies": {
         "nodemon": "^2.0.2"

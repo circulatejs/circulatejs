@@ -7,7 +7,7 @@ const settings = require('./settings');
 
 ('use strict');
 
-const pluginPaths = glob.sync(`${process.cwd()}/plugins/*`);
+const pluginPaths = glob.sync(`${process.cwd()}${settings.PLUGINS_PATH}/*`);
 const plugins = [];
 
 const pluginsLoad = async server => {
