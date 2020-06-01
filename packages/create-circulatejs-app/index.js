@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 'use strict'
 
-const path = require('path')
-const fs = require('fs-extra')
+const path = require('path');
+const fs = require('fs-extra');
+const colors = require('colors');
 const { program } = require('commander');
+const circulateGenerator = require('@circulatejs/generators');
 
-const circulatePath = path.join(require.resolve('@circulatejs/circulate'), '..')
 let project
 
 program
@@ -17,14 +18,8 @@ program
 program.parse(process.argv);
 
 if (project === undefined) {
-    console.error('Project name must be specified')
+    console.error('Project name must be specified'.red)
     process.exit(1)
 }
 
-fs.copy(circulatePath, `./${project}`)
-    .then(() => {
-        console.log('Complete')
-    })
-    .catch((err) => {
-        console.error(err)
-    })
+circulateGenerator.createNew(`./${project}`)
