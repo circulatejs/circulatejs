@@ -1,0 +1,8 @@
+node_modules
+*.sqlite
+
+# application environment file
+.env
+
+# Exclude Admin directory
+.admin/

@@ -5,13 +5,12 @@
     "main": "bootstrap.js",
     "scripts": {
         "start": "node bootstrap.js",
-        "dev": "nodemon bootstrap.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "nodemon bootstrap.js"
     },
     "author": "<%= author %>",
     "license": "MIT",
     "dependencies": {
-        "@circulatejs/core": "^0.1.5"
+        "@circulatejs/core": "^0.1.7"
     },
     "devDependencies": {
         "nodemon": "^2.0.2"

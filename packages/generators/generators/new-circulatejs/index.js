@@ -62,6 +62,11 @@ module.exports = class extends Generator {
             destination + '/README.md'
         );
 
+        this.fs.copy(
+            this.templatePath('_gitignore'),
+            destination + '/.gitignore'
+        );
+
         // Copy plugins dir
         this.fs.copyTpl(
             this.templatePath('./_package.json'),
@@ -92,11 +97,15 @@ module.exports = class extends Generator {
     }
 
     async install() {
+        process.chdir(this.destinationPath(this.options.path));
         if (this.answers.installType === 'Yarn') {
+            this.yarnInstall('@circulatejs/cli', { global: true })
             this.yarnInstall();
         } else {
+            this.npmInstall('@circulatejs/cli', { global: true })
             this.npmInstall();
         }
+        this.spawnCommand('git', ['init']);
     }
 
     end() {

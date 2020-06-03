@@ -8,6 +8,8 @@
     "create-circulatejs-app": "./index.js"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "@circulatejs/cli": "^0.1.5",
     "@circulatejs/generators": "^0.1.6",
     "commander": "^5.1.0",
     "fs-extra": "^9.0.0"
