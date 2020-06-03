@@ -1,6 +1,6 @@
 {
     "name": "@circulatejs/circulate",
-    "version": "0.1.6",
+    "version": "0.1.8",
     "description": "",
     "main": "bootstrap.js",
     "scripts": {
@@ -11,8 +11,8 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
-        "@circulatejs/cli": "^0.1.5",
-        "@circulatejs/core": "^0.1.6"
+        "@circulatejs/cli": "^0.1.8",
+        "@circulatejs/core": "^0.1.8"
     },
     "devDependencies": {
         "nodemon": "^2.0.2"
