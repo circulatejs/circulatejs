@@ -67,6 +67,11 @@ module.exports = class extends Generator {
             destination + '/.gitignore'
         );
 
+        this.fs.copy(
+            this.templatePath('circulate.js'),
+            destination + '/circulate.js'
+        );
+
         // Copy plugins dir
         this.fs.copyTpl(
             this.templatePath('./_package.json'),
@@ -99,10 +104,8 @@ module.exports = class extends Generator {
     async install() {
         process.chdir(this.destinationPath(this.options.path));
         if (this.answers.installType === 'Yarn') {
-            this.yarnInstall('@circulatejs/cli', { global: true })
             this.yarnInstall();
         } else {
-            this.npmInstall('@circulatejs/cli', { global: true })
             this.npmInstall();
         }
         this.spawnCommand('git', ['init']);
@@ -110,7 +113,7 @@ module.exports = class extends Generator {
 
     end() {
         console.log('')
-        console.log('CircualteJS app created. Have fun!')
+        console.log(colors.blue('Your new CirculateJS app created. Have fun!'))
         console.log('')
     }
   };
