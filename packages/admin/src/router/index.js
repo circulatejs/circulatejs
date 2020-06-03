@@ -18,8 +18,9 @@ routes.push(home)
 
 importAll(require.context(ADMIN_PLUGINS, true, /\/routes.js$/));
 
-function importAll(r) { 
+function importAll(r) {
   r.keys().forEach(key => {
+    console.log(key)
     cache[key] = r(key)
     routes.push(cache[key].default)
   });

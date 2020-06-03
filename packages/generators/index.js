@@ -7,6 +7,13 @@ const createNew = (path) => {
     env.run('create-new:circulatejs', { path })
 }
 
+const createPlugin = (path) => {
+    console.log('this ran')
+    env.register(require.resolve('./generators/new-plugin'), 'create:plugin');
+    env.run('create:plugin', { path })
+}
+
 module.exports = {
-    createNew
+    createNew,
+    createPlugin
 }

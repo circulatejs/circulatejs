@@ -11,6 +11,7 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
+        "@circulatejs/cli": "^0.1.5",
         "@circulatejs/core": "^0.1.6"
     },
     "devDependencies": {

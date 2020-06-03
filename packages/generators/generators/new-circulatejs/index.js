@@ -1,6 +1,6 @@
 const Generator = require('yeoman-generator');
 const fs = require('fs');
-const colors = require('colors');
+const colors = require('colors/safe');
 
 module.exports = class extends Generator {
     constructor(args, opts) {
@@ -43,7 +43,8 @@ module.exports = class extends Generator {
 
     configuring () {
         if (fs.existsSync(this.options.path)) {
-            console.log('That project already exists. Please choose another directory.')
+            console.log(colors.red('That project already exists. Please choose another directory.'))
+            console.log('')
             process.exit(1)
         }
     }

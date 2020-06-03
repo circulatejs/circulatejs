@@ -15,7 +15,7 @@ module.exports = class extends Generator {
           message: 'What is the name of your plugin?'
         },
         {
-          type: input,
+          type: 'input',
           name: 'version',
           message: 'What version would you like to start your plugin?',
           default: '1.0.0'
@@ -29,7 +29,7 @@ module.exports = class extends Generator {
           this.destinationPath('./plugins/' + this.answers.pluginName),
           {
             pluginName: this.answers.pluginName,
-            version: his.answers.version
+            version: this.answers.version
           }
         );
     }
