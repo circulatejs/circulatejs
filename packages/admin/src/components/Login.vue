@@ -16,15 +16,14 @@ export default {
     data() {
         return {
             auth: {
-                username: 'user',
-                password: 'password'
+                username: '',
+                password: ''
             }
         }
     },
     methods: {
         submit() {
             this.$http.post('/admin/api/login', this.auth).then(response => {
-                console.log(response)
                 localStorage.setItem('Token', response.data.token);
                 this.$router.push('/')
             }).catch(error => {

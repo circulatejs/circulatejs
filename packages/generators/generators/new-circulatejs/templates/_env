@@ -6,3 +6,5 @@ ADMIN_LOCATION='/admin'
 API_PATH='/api'
 
 PLUGINS_PATH='/<%= pluginsPath %>'
+
+AUTH_KEY='<%= authKey %>'

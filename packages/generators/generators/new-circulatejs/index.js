@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator');
 const fs = require('fs');
+const crypto = require('crypto')
 const colors = require('colors/safe');
 
 module.exports = class extends Generator {
@@ -51,6 +52,7 @@ module.exports = class extends Generator {
 
     writing() {
         const destination = this.destinationPath(this.options.path)
+        const authKey = crypto.randomBytes(256).toString('base64')
 
         this.fs.copy(
             this.templatePath('bootstrap.js'),
@@ -87,7 +89,8 @@ module.exports = class extends Generator {
             this.templatePath('./_env'),
             destination + '/.env',
             {
-                pluginsPath: this.answers.pluginsPath
+                pluginsPath: this.answers.pluginsPath,
+                authKey
             }
         );
 
