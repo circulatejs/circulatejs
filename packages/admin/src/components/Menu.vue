@@ -1,7 +1,8 @@
 <template>
-    <div class="menu">
+    <div v-if="showMenu" class="menu">
         <div class="upper-menu">
-            <div class="menu-button" @click="setMobileMenu"></div>
+            <div class="menu-button" @click="setMobileMenu">
+            </div>
         </div>
         <div class="menu-link__wrap">
             <router-link v-for="(menuItem, index) in menuItems" :key="index" :to="menuItem.path">
@@ -20,7 +21,16 @@ export default {
             mobileMenuActive: false
         }
     },
+    computed: {
+        showMenu() {
+            if (this.$route.path === '/login') {
+                return false
+            }
+            return true
+        }
+    },
     mounted() {
+        console.log(this.$route)
         this.$router.options.routes.forEach(route => {
             this.menuItems.push(route)
         })

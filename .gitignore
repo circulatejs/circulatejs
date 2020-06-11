@@ -4,3 +4,9 @@ yarn-error.log
 
 # ignore generated Admin files
 .admin/
+
+# ignore database
+*.sqlite
+
+# ignore editor files
+.vscode
