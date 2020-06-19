@@ -1,6 +1,6 @@
 {
   "name": "@circulatejs/admin",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "",
   "main": "index.js",
   "dependencies": {
