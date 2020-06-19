@@ -1,5 +1,4 @@
 const path = require('path');
-const jwt = require('jsonwebtoken');
 const admin = require('@circulatejs/admin');
 const settings = require('./settings');
 
@@ -9,6 +8,7 @@ const adminPath = path.join(process.cwd(), '.admin')
 exports.plugin = {
     name: 'admin',
     register: async (server) => {
+
         // Create the front end routes
         await server.route({
             method: 'GET',
@@ -37,10 +37,12 @@ exports.plugin = {
         await server.route({
             method: 'GET',
             path: `${adminUrl}/api/auth`,
-            handler: (request, h) => {
-                const response = h.response({adminAccess: true});
-
-                return response
+            handler: async (request, h) => {
+                if (request.auth.isAuthenticated) {
+                    return await h.response({ adminAccess: true });
+                } else {
+                    return await h.response({ adminAccess: false });
+                }
             },
             options: {
                 auth: 'jwt'
@@ -52,7 +54,7 @@ exports.plugin = {
             const { response, route } = request;
             const fingerprint = route.fingerprint === `${adminUrl}/#`;
             if (fingerprint && response.isBoom && response.output.statusCode === 404) {
-              return h.file(`${adminPath}/index.html`);
+                return h.file(`${adminPath}/index.html`);
             }
             return h.continue;
         });

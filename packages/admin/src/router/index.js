@@ -2,27 +2,33 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 
+import store from '../store'
 import Home from '../components/Home.vue'
 import Login from '../components/Login.vue'
 
-const isAuthenticated = false
 const cache = {}
 const routes = []
 const $http = axios
 
+const loginPath = '/login'
+
 Vue.use(VueRouter)
 
+const defaultRoute = {
+    path: '*',
+    component: Home
+}
 const home = {
     path: '/',
     menu: 'Home',
     component: Home
 }
-
 const login = {
     path: '/login',
     component: Login
 }
 
+routes.push(defaultRoute)
 routes.push(home)
 routes.push(login)
 
@@ -43,25 +49,26 @@ const router = new VueRouter({
 
 // Setup the route guard
 router.beforeEach((to, from, next) => {
-    const loginPath = '/login'
     let Token = localStorage.getItem('Token') || null
 
     if (to.path === loginPath) {
         next()
-    }
-
-    if (Token) {
-        $http.get('/admin/api/auth', {
+    } else if (Token) {
+        $http.get(`${ADMIN_LOCATION}/api/auth`, {
             headers: { Authorization: Token }
         }).then(response => {
             if (response.data.adminAccess) {
+                store.commit('setAuth', response.data.adminAccess)
                 next()
             } else {
                 next(loginPath)
             }
         }).catch(err => {
+            console.error(err)
             next(loginPath)
         })
+    } else {
+        next(loginPath)
     }
 })
 

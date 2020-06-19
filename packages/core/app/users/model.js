@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi')
+const Joi = require('@hapi/joi');
 const Schwifty = require('schwifty');
 
 const User = async server => {
@@ -43,8 +43,6 @@ const User = async server => {
             })
         }
     })
-
-
 }
 
 module.exports = User

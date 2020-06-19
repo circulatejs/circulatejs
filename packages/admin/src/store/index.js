@@ -5,16 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    menuItems: []
+    auth: false
   },
   getters: {
-    getMenuItems: state => {
-      return state.menuItems
+    getAuth: state => {
+      return state.auth
     }
   },
   mutations: {
-    addMenuItem(state, menuItem) {
-      state.menuItems.push(menuItem)
+    setAuth(state, auth) {
+        state.auth = auth
     }
   },
   actions: {

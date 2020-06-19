@@ -2,12 +2,11 @@
 
 const Hapi = require('@hapi/hapi');
 const Schwifty = require('schwifty');
-// const Jwt = require('hapi-auth-jwt2');
 const colors = require('colors/safe');
 
 const plugins = require('./app/plugins');
 const settings = require('./app/settings')
-// const auth = require('./app/auth')
+const checkInitialUser = require('./app/users/initial')
 
 // Clear the console output when we start the server
 console.clear()
@@ -39,6 +38,9 @@ const start = async () => {
             }
         }
     });
+
+    server.ext('onPreStart', checkInitialUser, { before: '@circulatejs/users', after: 'schwifty' });
+
     await server.register([
         require('@hapi/inert'),
         require('./app/models'),
@@ -47,6 +49,9 @@ const start = async () => {
         require('./app/users/plugin')
     ]);
     await plugins(server);
+
+    await server.initialize()
+
     await server.start();
 
     console.log('Your CirculateJS server is running at %s', server.info.uri);
@@ -58,5 +63,6 @@ process.on('unhandledRejection', err => {
     console.error(err);
     process.exit(1);
 });
+
 
 start();

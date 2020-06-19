@@ -2,10 +2,11 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const Boom = require('@hapi/boom')
 const settings = require('../settings');
+
 const userModel = require('./model');
 
 exports.plugin = {
-    name: 'users',
+    name: '@circulatejs/users',
     register: async (server) => {
         await userModel(server)
 
@@ -16,7 +17,6 @@ exports.plugin = {
             handler: async (request, h) => {
                 const { User } = server.models();
                 const { username, password } = request.payload
-                const passwordMatch = await bcrypt.compare(password, user.password);
 
                 const user = await User.query().findOne({
                     username: username
@@ -26,15 +26,17 @@ exports.plugin = {
                     return err
                 })
 
-                if (passwordMatch) {
-                    const token = await jwt.sign(username, settings.AUTH_KEY)
-                    return { token }
+                if (user) {
+                    const passwordMatch = await bcrypt.compare(password, user.password);
+                    if (passwordMatch) {
+                        const token = await jwt.sign(username, settings.AUTH_KEY)
+                        return { auth: true, token }
+                    } else {
+                        return { auth: false, text: 'Username or password invalid' }
+                    }
                 } else {
-                    return { text: 'Username or password invalid' }
+                    return { auth: false, text: 'Username or password invalid' }
                 }
-            },
-            options: {
-                auth: false
             }
         });
 

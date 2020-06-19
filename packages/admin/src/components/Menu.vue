@@ -2,6 +2,7 @@
     <div v-if="showMenu" class="menu">
         <div class="upper-menu">
             <div class="menu-button" @click="setMobileMenu">
+                <button type="button" @click="logout">Logout</button>
             </div>
         </div>
         <div class="menu-link__wrap">
@@ -30,7 +31,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$route)
         this.$router.options.routes.forEach(route => {
             this.menuItems.push(route)
         })
@@ -38,6 +38,14 @@ export default {
     methods: {
         setMobileMenu() {
             this.mobileMenuActive ? false : true
+        },
+        logout() {
+            let Token = localStorage.getItem('Token') || null
+
+            if (Token) {
+                localStorage.removeItem('Token')
+                this.$router.push('/login')
+            }
         }
     }
 }

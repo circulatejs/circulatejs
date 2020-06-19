@@ -3,15 +3,15 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-require('dotenv').config()
-
 const adminPath = __dirname
 const workingDir = process.cwd()
+
+require('dotenv').config()
 
 const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins');
 
 module.exports = {
-  mode: 'production',
+  mode: process.env.ENV || 'production',
   entry: `${adminPath}/src/main.js`,
   output: {
     path: `${workingDir}/.admin`
