@@ -8,7 +8,6 @@
     "circulate": "./circulate.js"
   },
   "dependencies": {
-    "@circulatejs/core": "^0.1.10",
     "@circulatejs/generators": "^0.1.10",
     "commander": "^5.1.0",
     "dotenv": "^8.2.0"

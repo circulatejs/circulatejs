@@ -6,7 +6,6 @@
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@circulatejs/circulate": "^0.1.10",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "cli-progress": "^3.8.2",
