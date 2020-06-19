@@ -1,6 +1,6 @@
 {
   "name": "create-circulatejs-app",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Create a new CirculateJS app",
   "main": "index.js",
   "license": "MIT",
@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "-": "^0.0.1",
-    "@circulatejs/cli": "^0.1.9",
-    "@circulatejs/generators": "^0.1.9",
+    "@circulatejs/cli": "^0.1.10",
+    "@circulatejs/generators": "^0.1.10",
     "commander": "^5.1.0",
     "fs-extra": "^9.0.0"
   },

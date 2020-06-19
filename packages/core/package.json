@@ -1,6 +1,6 @@
 {
     "name": "@circulatejs/core",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "description": "CirculateJS Core",
     "main": "index.js",
     "bin": {
@@ -14,8 +14,8 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
-        "@circulatejs/admin": "^0.1.9",
-        "@circulatejs/circulate": "^0.1.9",
+        "@circulatejs/admin": "^0.1.10",
+        "@circulatejs/circulate": "^0.1.10",
         "@hapi/boom": "^9.1.0",
         "@hapi/hapi": "^19.1.0",
         "@hapi/inert": "^6.0.1",
