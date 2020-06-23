@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="admin">
     <Menu v-if="getAuth"></Menu>
     <div class="content">
       <router-view></router-view>
@@ -24,13 +24,13 @@ export default {
 }
 </script>
 
-<style scoped>
-
-.app {
-  display: flex;
+<style lang="postcss" scoped>
+.admin {
+  @apply flex;
 }
 .content {
   padding: 65px 15px 15px;
+  @apply w-full;
 }
 
 </style>

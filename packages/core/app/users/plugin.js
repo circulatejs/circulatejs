@@ -66,7 +66,7 @@ exports.plugin = {
                 return await h.response({ user: addUser })
             },
             options: {
-                auth: false
+                auth: 'jwt'
             }
         });
     }

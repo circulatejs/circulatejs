@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const settings = {
+    APP_NAME: process.env.APP_NAME || 'CirculateJS',
     HOST: process.env.HOST || 'localhost',
     PORT: process.env.PORT || 3000,
     DB_NAME: process.env.DB_NAME || 'circulatejs',

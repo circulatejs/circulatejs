@@ -82,7 +82,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       ADMIN_PLUGINS: JSON.stringify(pluginsPath),
-      ADMIN_LOCATION: JSON.stringify(process.env.ADMIN_LOCATION || '/admin')
+      ADMIN_LOCATION: JSON.stringify(process.env.ADMIN_LOCATION || '/admin'),
+      APP_NAME: JSON.stringify(process.env.APP_NAME || 'CirculateJS Admin')
     })
   ]
 };

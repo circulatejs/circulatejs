@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 
 import store from '../store'
-import Home from '../components/Home.vue'
-import Login from '../components/Login.vue'
+import Dashboard from '../pages/Dashboard.vue'
+import Login from '../pages/Login.vue'
 
 const cache = {}
 const routes = []
@@ -16,12 +16,12 @@ Vue.use(VueRouter)
 
 const defaultRoute = {
     path: '*',
-    component: Home
+    component: Dashboard
 }
-const home = {
+const dashboard = {
     path: '/',
-    menu: 'Home',
-    component: Home
+    menu: 'Dashboard',
+    component: Dashboard
 }
 const login = {
     path: '/login',
@@ -29,7 +29,7 @@ const login = {
 }
 
 routes.push(defaultRoute)
-routes.push(home)
+routes.push(dashboard)
 routes.push(login)
 
 importAll(require.context(ADMIN_PLUGINS, true, /\/routes.js$/));

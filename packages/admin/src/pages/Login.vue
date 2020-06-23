@@ -1,19 +1,24 @@
 <template>
-    <div>
-        <form @submit.prevent="submit">
-            <input v-model="auth.username" type="text" placeholder="Username" />
-            <input v-model="auth.password" type="password" placeholder="Password" />
-            <button type="submit">
-                Sign In
-            </button>
-        </form>
-        <p>{{ error }}</p>
+    <div class="flex justify-center">
+        <div class="flex flex-col p-4 bg-white rounded-lg sm:w-4/12 w-full">
+            <form @submit.prevent="submit" class="flex flex-col">
+                <c-input v-model.trim="auth.username" type="text" placeholder="Username"></c-input>
+                <c-input v-model.trim="auth.password" type="password" placeholder="Password"></c-input>
+                <button type="submit">
+                    Sign In
+                </button>
+            </form>
+            <p>{{ error }}</p>
+        </div>
     </div>
 </template>
 
 <script>
+import { cInput } from '@circulatejs/components'
+
 export default {
     name: 'Login',
+    components: { cInput },
     data() {
         return {
             auth: {
