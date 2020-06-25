@@ -41,11 +41,18 @@ function importAll(r) {
   });
 }
 
-const router = new VueRouter({
+let routerConfig = {
     mode: 'history',
     base: `${ADMIN_LOCATION}/`,
     routes
-})
+}
+
+if (ADMIN_DEV) {
+    delete routerConfig.mode
+    delete routerConfig.base
+}
+
+const router = new VueRouter(routerConfig)
 
 // Setup the route guard
 router.beforeEach((to, from, next) => {

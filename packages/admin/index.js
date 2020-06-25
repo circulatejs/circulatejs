@@ -36,7 +36,8 @@ admin.buildAdmin = async () => {
   return await new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err || stats.hasErrors()) {
-        reject(setErrors(err))
+        const error = err || stats.compilation.errors
+        reject(setErrors(error))
       } else {
         resolve(setAdminComplete())
       }
@@ -51,7 +52,9 @@ function setAdminComplete() {
 }
 function setErrors(err) {
   console.log(colors.red('There was an error building admin\n'))
-  console.log(err)
+  if (err) {
+    console.log(err)
+  }
   console.log('')
 }
 

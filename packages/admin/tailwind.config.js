@@ -2,6 +2,7 @@ module.exports = {
   purge: [
     './src/**/*.vue',
     './src/**/*.html',
+    './src/base.css',
     './src/main.js'
   ],
   theme: {
@@ -11,7 +12,13 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
     },
-    extend: {},
+    extend: {
+        colors: {
+            c: {
+                blue: '#2361d3'
+            }
+        }
+    }
   },
   variants: {},
   plugins: [],

@@ -1,7 +1,7 @@
 <template>
   <div class="admin">
     <Menu v-if="getAuth"></Menu>
-    <div class="content">
+    <div :class="{ content: getAuth, auth: !getAuth }">
       <router-view></router-view>
     </div>
   </div>
@@ -26,11 +26,13 @@ export default {
 
 <style lang="postcss" scoped>
 .admin {
-  @apply flex;
+    display: flex;
+}
+.auth {
+    width: 100vw;
 }
 .content {
-  padding: 65px 15px 15px;
-  @apply w-full;
+    width: calc(100vw - 300px);
+    padding: 65px 15px 15px;
 }
-
 </style>

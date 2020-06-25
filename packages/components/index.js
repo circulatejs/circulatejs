@@ -1,4 +1,4 @@
-import cInput from './components/c-input.vue'
+import cInput from './lib/c-input.vue'
 
 export {
     cInput

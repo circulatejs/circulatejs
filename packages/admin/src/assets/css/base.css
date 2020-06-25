@@ -11,8 +11,17 @@ html, body {
     overflow: hidden;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 input {
-    border: 1px solid gray;
+    @apply px-3 py-2;
     border-radius: 8px;
-    padding: 5px;
+}
+
+button {
+    @apply bg-c-blue text-white px-3 py-2;
+    border-radius: 8px;
 }

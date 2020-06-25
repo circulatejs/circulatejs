@@ -5,6 +5,9 @@ yarn-error.log
 # ignore generated Admin files
 .admin/
 
+# ignore the environment files
+.env
+
 # ignore database
 *.sqlite
 

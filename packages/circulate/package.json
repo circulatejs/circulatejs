@@ -19,7 +19,7 @@
         "nodemon": "^2.0.2"
     },
     "engines": {
-        "node": ">=12"
+        "node": ">=12.0.0"
     },
     "gitHead": "5bd5956b8a6101bf0a462d53ba012d3ca6c7fb3a"
 }
