@@ -17,22 +17,20 @@ export default {
     Menu
   },
   computed: {
-    ...mapGetters([
-      'getAuth'
-    ])
+    ...mapGetters(['getAuth'])
   }
 }
 </script>
 
 <style lang="postcss" scoped>
 .admin {
-    display: flex;
+  display: flex;
 }
 .auth {
-    width: 100vw;
+  width: 100vw;
 }
 .content {
-    width: calc(100vw - 300px);
-    padding: 65px 15px 15px;
+  width: calc(100vw - 300px);
+  padding: 65px 15px 15px;
 }
 </style>

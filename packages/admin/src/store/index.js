@@ -8,17 +8,15 @@ export default new Vuex.Store({
     auth: false
   },
   getters: {
-    getAuth: state => {
+    getAuth: (state) => {
       return state.auth
     }
   },
   mutations: {
-    setAuth (state, auth) {
+    setAuth(state, auth) {
       state.auth = auth
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {}
 })

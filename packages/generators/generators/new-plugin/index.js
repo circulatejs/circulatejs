@@ -9,7 +9,7 @@ module.exports = class extends Generator {
   }
   /* eslint-enable */
 
-  async prompting () {
+  async prompting() {
     this.answers = await this.prompt([
       {
         type: 'input',
@@ -25,7 +25,7 @@ module.exports = class extends Generator {
     ])
   }
 
-  writing () {
+  writing() {
     this.fs.copyTpl(
       this.templatePath('./'),
       this.destinationPath('./plugins/' + this.answers.pluginName),
@@ -36,7 +36,7 @@ module.exports = class extends Generator {
     )
   }
 
-  end () {
+  end() {
     console.log(`Your plugin ${this.answers.pluginName} created.`)
   }
 }

@@ -39,8 +39,8 @@ routes.push(login)
 
 importAll(require.context(adminPluginSetting, true, /\/routes.js$/))
 
-function importAll (r) {
-  r.keys().forEach(key => {
+function importAll(r) {
+  r.keys().forEach((key) => {
     cache[key] = r(key)
     routes.push(cache[key].default)
   })
@@ -66,19 +66,22 @@ router.beforeEach((to, from, next) => {
   if (to.path === loginPath) {
     next()
   } else if (Token) {
-    $http.get(`${adminPluginSetting}/api/auth`, {
-      headers: { Authorization: Token }
-    }).then(response => {
-      if (response.data.adminAccess) {
-        store.commit('setAuth', response.data.adminAccess)
-        next()
-      } else {
+    $http
+      .get(`${adminPluginSetting}/api/auth`, {
+        headers: { Authorization: Token }
+      })
+      .then((response) => {
+        if (response.data.adminAccess) {
+          store.commit('setAuth', response.data.adminAccess)
+          next()
+        } else {
+          next(loginPath)
+        }
+      })
+      .catch((err) => {
+        console.error(err)
         next(loginPath)
-      }
-    }).catch(err => {
-      console.error(err)
-      next(loginPath)
-    })
+      })
   } else {
     next(loginPath)
   }

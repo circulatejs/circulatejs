@@ -11,7 +11,7 @@ module.exports = class extends Generator {
   }
   /* eslint-enable */
 
-  async prompting () {
+  async prompting() {
     this.answers = await this.prompt([
       {
         type: 'input',
@@ -33,7 +33,8 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pluginsPath',
-        message: 'What path would you like for plugins? (you\'ll most likely not want to change this)',
+        message:
+          "What path would you like for plugins? (you'll most likely not want to change this)",
         default: 'plugins'
       },
       {
@@ -45,7 +46,7 @@ module.exports = class extends Generator {
     ])
   }
 
-  configuring () {
+  configuring() {
     if (fs.existsSync(this.options.path)) {
       console.log(colors.red('That project already exists. Please choose another directory.'))
       console.log('')
@@ -53,49 +54,29 @@ module.exports = class extends Generator {
     }
   }
 
-  writing () {
+  writing() {
     const destination = this.destinationPath(this.options.path)
     const authKey = crypto.randomBytes(256).toString('base64')
 
-    this.fs.copy(
-      this.templatePath('bootstrap.js'),
-      destination + '/bootstrap.js'
-    )
+    this.fs.copy(this.templatePath('bootstrap.js'), destination + '/bootstrap.js')
 
-    this.fs.copy(
-      this.templatePath('README.md'),
-      destination + '/README.md'
-    )
+    this.fs.copy(this.templatePath('README.md'), destination + '/README.md')
 
-    this.fs.copy(
-      this.templatePath('_gitignore'),
-      destination + '/.gitignore'
-    )
+    this.fs.copy(this.templatePath('_gitignore'), destination + '/.gitignore')
 
-    this.fs.copy(
-      this.templatePath('circulate.js'),
-      destination + '/circulate.js'
-    )
+    this.fs.copy(this.templatePath('circulate.js'), destination + '/circulate.js')
 
     // Copy plugins dir
-    this.fs.copyTpl(
-      this.templatePath('./_package.json'),
-      destination + '/package.json',
-      {
-        name: this.answers.projectName,
-        description: this.answers.desc,
-        author: this.answers.author
-      }
-    )
+    this.fs.copyTpl(this.templatePath('./_package.json'), destination + '/package.json', {
+      name: this.answers.projectName,
+      description: this.answers.desc,
+      author: this.answers.author
+    })
 
-    this.fs.copyTpl(
-      this.templatePath('./_env'),
-      destination + '/.env',
-      {
-        pluginsPath: this.answers.pluginsPath,
-        authKey
-      }
-    )
+    this.fs.copyTpl(this.templatePath('./_env'), destination + '/.env', {
+      pluginsPath: this.answers.pluginsPath,
+      authKey
+    })
 
     // Copy plugins dir
     this.fs.copyTpl(
@@ -107,7 +88,7 @@ module.exports = class extends Generator {
     )
   }
 
-  async install () {
+  async install() {
     process.chdir(this.destinationPath(this.options.path))
     if (this.answers.installType === 'Yarn') {
       this.yarnInstall()
@@ -117,7 +98,7 @@ module.exports = class extends Generator {
     this.spawnCommand('git', ['init'])
   }
 
-  end () {
+  end() {
     console.log('')
     console.log(colors.blue('Your new CirculateJS app created. Have fun!'))
     console.log('')

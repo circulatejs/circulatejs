@@ -1,16 +1,13 @@
 <template>
-    <div class="dashboard">
-        <p>This is the home page</p>
-    </div>
+  <div class="dashboard">
+    <p>This is the home page</p>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: 'Dashboard'
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

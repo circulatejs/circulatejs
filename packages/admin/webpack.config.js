@@ -44,10 +44,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               indent: 'postcss',
-              plugins: [
-                require('tailwindcss'),
-                require('autoprefixer')
-              ]
+              plugins: [require('tailwindcss'), require('autoprefixer')]
             }
           }
         ]
@@ -71,10 +68,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               indent: 'postcss',
-              plugins: [
-                require('tailwindcss'),
-                require('autoprefixer')
-              ]
+              plugins: [require('tailwindcss'), require('autoprefixer')]
             }
           }
         ]

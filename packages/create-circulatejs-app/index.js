@@ -6,11 +6,9 @@ const circulateGenerator = require('@circulatejs/generators')
 
 let project
 
-program
-  .arguments('<directory>')
-  .action(cmd => {
-    project = cmd
-  })
+program.arguments('<directory>').action((cmd) => {
+  project = cmd
+})
 
 program.parse(process.argv)
 

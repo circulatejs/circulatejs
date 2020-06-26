@@ -5,18 +5,13 @@ module.exports = {
     es2020: true,
     node: true
   },
-  extends: [
-    'plugin:vue/essential',
-    'standard'
-  ],
+  extends: ['plugin:vue/essential', 'standard', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 11
   },
-  plugins: [
-    'vue'
-  ],
+  plugins: ['vue', 'prettier'],
   ignorePatterns: [
-    '**/.admin',
+    '**/.admin/',
     '**/.env',
     '*.md',
     '*.json',
@@ -24,8 +19,11 @@ module.exports = {
     '*.lock',
     '_*',
     '*.sqlite',
-    '*.css'
+    '*.css',
+    '*.html',
+    '*.svg'
   ],
   rules: {
+    'prettier/prettier': 'error'
   }
 }

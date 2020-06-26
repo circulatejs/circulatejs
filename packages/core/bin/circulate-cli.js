@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('@circulatejs/cli')
+require('@circulatejs/cli');
