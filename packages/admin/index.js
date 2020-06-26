@@ -1,9 +1,10 @@
+const path = require('path')
 const webpack = require('webpack')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 const cliProgress = require('cli-progress')
-const colors = require('colors/safe');
+const colors = require('colors/safe')
 
-const config = require(__dirname + '/webpack.config')
+const config = require(path.join(__dirname, '/webpack.config'))
 const compiler = webpack(config)
 const ProgressBar = new cliProgress.SingleBar({
   format: 'Building Admin ' + colors.blue('{bar}') + ' {percentage}% {msg}',
@@ -45,12 +46,12 @@ admin.buildAdmin = async () => {
   })
 }
 
-function setAdminComplete() {
+function setAdminComplete () {
   if (compiler.hooks.done) {
     console.log(colors.blue('Admin build complete\n'))
   }
 }
-function setErrors(err) {
+function setErrors (err) {
   console.log(colors.red('There was an error building admin\n'))
   if (err) {
     console.log(err)

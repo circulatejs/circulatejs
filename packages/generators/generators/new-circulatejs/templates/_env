@@ -1,10 +1,10 @@
-HOST='localhost'
-PORT=3000
-DB_NAME='circulatejs'
+HOST = 'localhost'
+PORT = 3000
+DB_NAME = 'circulatejs'
 
-ADMIN_LOCATION='/admin'
-API_PATH='/api'
+ADMIN_LOCATION = '/admin'
+API_PATH = '/api'
 
-PLUGINS_PATH='/<%= pluginsPath %>'
+PLUGINS_PATH = '/<%= pluginsPath %>'
 
-AUTH_KEY='<%= authKey %>'
+AUTH_KEY = '<%= authKey %>'

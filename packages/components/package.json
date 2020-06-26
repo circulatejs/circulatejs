@@ -6,6 +6,6 @@
   "author": "CirculateJS Team",
   "license": "MIT",
   "dependencies": {
-
+    "quill": "^1.3.7"
   }
 }

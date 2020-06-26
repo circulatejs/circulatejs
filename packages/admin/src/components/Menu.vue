@@ -21,40 +21,40 @@
 
 <script>
 export default {
-    name: 'Menu',
-    data() {
-        return {
-            menuItems: [],
-            mobileMenuActive: false
-        }
-    },
-    computed: {
-        showMenu() {
-            if (this.$route.path === '/login') {
-                return false
-            }
-            return true
-        }
-    },
-    mounted() {
-        this.$router.options.routes.forEach(route => {
-            this.menuItems.push(route)
-        })
-    },
-    methods: {
-        setMobileMenu() {
-            this.mobileMenuActive = this.mobileMenuActive ? false : true
-        },
-        logout() {
-            const Token = localStorage.getItem('Token') || null
-
-            if (Token) {
-                this.$store.commit('setAuth', false)
-                localStorage.removeItem('Token')
-                this.$router.push('/login')
-            }
-        }
+  name: 'Menu',
+  data () {
+    return {
+      menuItems: [],
+      mobileMenuActive: false
     }
+  },
+  computed: {
+    showMenu () {
+      if (this.$route.path === '/login') {
+        return false
+      }
+      return true
+    }
+  },
+  mounted () {
+    this.$router.options.routes.forEach(route => {
+      this.menuItems.push(route)
+    })
+  },
+  methods: {
+    setMobileMenu () {
+      this.mobileMenuActive = !this.mobileMenuActive
+    },
+    logout () {
+      const Token = localStorage.getItem('Token') || null
+
+      if (Token) {
+        this.$store.commit('setAuth', false)
+        localStorage.removeItem('Token')
+        this.$router.push('/login')
+      }
+    }
+  }
 }
 </script>
 

@@ -17,45 +17,45 @@
 import { cInput } from '@circulatejs/components'
 
 export default {
-    name: 'Login',
-    components: { cInput },
-    data() {
-        return {
-            auth: {
-                username: '',
-                password: ''
-            },
-            pending: false,
-            error: ''
-        }
-    },
-    methods: {
-        submit() {
-            if (this.auth.username.length && this.auth.password.length) {
-                this.$http.post('/admin/api/login', this.auth)
-                .then(response => {
-                    this.error = ''
-                    if (response.data.auth) {
-                        localStorage.setItem('Token', response.data.token);
-                        this.$store.commit('setAuth', response.data.auth)
-                        this.pending = true
-                        this.$router.push('/').catch((err) => {
-                            throw new Error(`${err}`);
-                        });
-                    } else {
-                        this.auth.password = ''
-                        localStorage.removeItem('Token')
-                        this.pending = false
-                        this.$store.commit('setAuth', response.data.auth)
-                        this.error = response.data.text
-                    }
-                }).catch(error => {
-                    localStorage.removeItem('Token')
-                    this.pending = false
-                    console.error(error)
-                })
-            }
-        }
+  name: 'Login',
+  components: { cInput },
+  data () {
+    return {
+      auth: {
+        username: '',
+        password: ''
+      },
+      pending: false,
+      error: ''
     }
+  },
+  methods: {
+    submit () {
+      if (this.auth.username.length && this.auth.password.length) {
+        this.$http.post('/admin/api/login', this.auth)
+          .then(response => {
+            this.error = ''
+            if (response.data.auth) {
+              localStorage.setItem('Token', response.data.token)
+              this.$store.commit('setAuth', response.data.auth)
+              this.pending = true
+              this.$router.push('/').catch((err) => {
+                throw new Error(`${err}`)
+              })
+            } else {
+              this.auth.password = ''
+              localStorage.removeItem('Token')
+              this.pending = false
+              this.$store.commit('setAuth', response.data.auth)
+              this.error = response.data.text
+            }
+          }).catch(error => {
+            localStorage.removeItem('Token')
+            this.pending = false
+            console.error(error)
+          })
+      }
+    }
+  }
 }
 </script>

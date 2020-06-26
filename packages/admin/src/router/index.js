@@ -10,73 +10,78 @@ const cache = {}
 const routes = []
 const $http = axios
 
+// eslint-disable-next-line
+const adminPluginSetting = ADMIN_PLUGINS
+// eslint-disable-next-line
+const adminDevSetting = ADMIN_DEV
+
 const loginPath = '/login'
 
 Vue.use(VueRouter)
 
 const defaultRoute = {
-    path: '*',
-    component: Dashboard
+  path: '*',
+  component: Dashboard
 }
 const dashboard = {
-    path: '/',
-    menu: 'Dashboard',
-    component: Dashboard
+  path: '/',
+  menu: 'Dashboard',
+  component: Dashboard
 }
 const login = {
-    path: '/login',
-    component: Login
+  path: '/login',
+  component: Login
 }
 
 routes.push(defaultRoute)
 routes.push(dashboard)
 routes.push(login)
 
-importAll(require.context(ADMIN_PLUGINS, true, /\/routes.js$/));
+importAll(require.context(adminPluginSetting, true, /\/routes.js$/))
 
-function importAll(r) {
+function importAll (r) {
   r.keys().forEach(key => {
     cache[key] = r(key)
     routes.push(cache[key].default)
-  });
+  })
 }
 
-let routerConfig = {
-    mode: 'history',
-    base: `${ADMIN_LOCATION}/`,
-    routes
+const routerConfig = {
+  mode: 'history',
+  base: `${adminPluginSetting}/`,
+  routes
 }
 
-if (ADMIN_DEV) {
-    delete routerConfig.mode
-    delete routerConfig.base
+if (adminDevSetting) {
+  delete routerConfig.mode
+  delete routerConfig.base
 }
 
 const router = new VueRouter(routerConfig)
 
 // Setup the route guard
 router.beforeEach((to, from, next) => {
-    let Token = localStorage.getItem('Token') || null
+  const Token = localStorage.getItem('Token') || null
 
-    if (to.path === loginPath) {
+  if (to.path === loginPath) {
+    next()
+  } else if (Token) {
+    $http.get(`${adminPluginSetting}/api/auth`, {
+      headers: { Authorization: Token }
+    }).then(response => {
+      if (response.data.adminAccess) {
+        store.commit('setAuth', response.data.adminAccess)
         next()
-    } else if (Token) {
-        $http.get(`${ADMIN_LOCATION}/api/auth`, {
-            headers: { Authorization: Token }
-        }).then(response => {
-            if (response.data.adminAccess) {
-                store.commit('setAuth', response.data.adminAccess)
-                next()
-            } else {
-                next(loginPath)
-            }
-        }).catch(err => {
-            console.error(err)
-            next(loginPath)
-        })
-    } else {
+      } else {
         next(loginPath)
-    }
+      }
+    }).catch(err => {
+      console.error(err)
+      next(loginPath)
+    })
+  } else {
+    next(loginPath)
+  }
 })
 
 export default router

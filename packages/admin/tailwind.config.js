@@ -10,16 +10,16 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px',
+      xl: '1280px'
     },
     extend: {
-        colors: {
-            c: {
-                blue: '#2361d3'
-            }
+      colors: {
+        c: {
+          blue: '#2361d3'
         }
+      }
     }
   },
   variants: {},
-  plugins: [],
+  plugins: []
 }

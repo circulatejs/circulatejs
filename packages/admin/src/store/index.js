@@ -13,8 +13,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setAuth(state, auth) {
-        state.auth = auth
+    setAuth (state, auth) {
+      state.auth = auth
     }
   },
   actions: {

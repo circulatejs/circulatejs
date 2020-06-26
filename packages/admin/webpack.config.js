@@ -1,5 +1,5 @@
 const path = require('path')
-const webpack = require('webpack');
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
@@ -8,10 +8,10 @@ const workingDir = process.cwd()
 
 require('dotenv').config()
 
-const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins');
+const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins')
 const envAdmin = process.env.ADMIN_LOCATION || '/admin'
 const appName = process.env.APP_NAME || 'CirculateJS Admin'
-const adminDev = process.env.ENV === 'development' && process.env.ADMIN_DEV || false
+const adminDev = (process.env.ENV === 'development' && process.env.ADMIN_DEV) || false
 
 module.exports = {
   mode: process.env.ENV || 'production',
@@ -25,10 +25,12 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/,
+      {
+        test: /\.js$/,
         use: 'babel-loader'
       },
-      { test: /\.vue$/,
+      {
+        test: /\.vue$/,
         use: {
           loader: 'vue-loader'
         }
@@ -50,7 +52,8 @@ module.exports = {
           }
         ]
       },
-      { test: /\.css$/,
+      {
+        test: /\.css$/,
         use: [
           {
             loader: 'style-loader'
@@ -80,11 +83,11 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-            name: '[name].[ext]',
-            outputPath: 'img',
-            esModule: false
-        },
-      },
+          name: '[name].[ext]',
+          outputPath: 'img',
+          esModule: false
+        }
+      }
     ]
   },
   plugins: [
@@ -103,10 +106,10 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-        '/admin/api': {
-            target: `http://${process.env.HOST}:${process.env.PORT}`,
-            changeOrigin: true
-        }
+      '/admin/api': {
+        target: `http://${process.env.HOST}:${process.env.PORT}`,
+        changeOrigin: true
+      }
     }
   }
-};
+}

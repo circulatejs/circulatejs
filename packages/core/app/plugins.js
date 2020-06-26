@@ -1,42 +1,42 @@
-const path = require('path');
-const fs = require('fs');
-const glob = require('glob');
-const colors = require('colors/safe');
+'use strict'
 
-const settings = require('./settings');
+const path = require('path')
+const fs = require('fs')
+const glob = require('glob')
+const colors = require('colors/safe')
 
-('use strict');
+const settings = require('./settings')
 
-const pluginPaths = glob.sync(`${process.cwd()}${settings.PLUGINS_PATH}/*`);
-const plugins = [];
+const pluginPaths = glob.sync(`${process.cwd()}${settings.PLUGINS_PATH}/*`)
+const plugins = []
 
 const pluginsLoad = async server => {
-    pluginPaths.forEach((plugin, index) => {
-        const pluginFilePath = `${plugin}/index.js`
-        let pluginFile = {}
+  pluginPaths.forEach((plugin, index) => {
+    const pluginFilePath = `${plugin}/index.js`
+    let pluginFile = {}
 
-        if (fs.existsSync(pluginFilePath)) {
-            pluginFile = require(pluginFilePath)
-            pluginFile.routes = {
-                prefix: settings.API_PATH
-            }
+    if (fs.existsSync(pluginFilePath)) {
+      pluginFile = require(pluginFilePath)
+      pluginFile.routes = {
+        prefix: settings.API_PATH
+      }
 
-            if (pluginFile.plugin && pluginFile.plugin.prefix) {
-                pluginFile.routes = {
-                    prefix: pluginFile.plugin.prefix || settings.API_PATH
-                }
-            }
-
-            plugins.push(pluginFile);
-        } else {
-            console.log(colors.yellow(`WARNING: A plugin is attempting to be loaded, but no plugin index exists for /${path.relative(process.cwd(), plugin)}`))
-            if (index + 1 === pluginPaths.length) {
-                console.log('')
-            }
+      if (pluginFile.plugin && pluginFile.plugin.prefix) {
+        pluginFile.routes = {
+          prefix: pluginFile.plugin.prefix || settings.API_PATH
         }
-    });
+      }
 
-    await server.register(plugins)
-};
+      plugins.push(pluginFile)
+    } else {
+      console.log(colors.yellow(`WARNING: A plugin is attempting to be loaded, but no plugin index exists for /${path.relative(process.cwd(), plugin)}`))
+      if (index + 1 === pluginPaths.length) {
+        console.log('')
+      }
+    }
+  })
 
-module.exports = pluginsLoad;
+  await server.register(plugins)
+}
+
+module.exports = pluginsLoad

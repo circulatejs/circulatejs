@@ -9,7 +9,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Menu from './components/Menu.vue';
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
