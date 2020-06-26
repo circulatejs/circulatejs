@@ -1,6 +1,6 @@
-# CirculateJS - Core
+# CirculateJS - Admin
 
-Core package for the CirculateJS project.
+Admin package for the CirculateJS project.
 
 ## More Information
 

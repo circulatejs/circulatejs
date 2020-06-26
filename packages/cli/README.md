@@ -1,6 +1,6 @@
-# CirculateJS - Core
+# CirculateJS - CLI
 
-Core package for the CirculateJS project.
+CLI package for the CirculateJS project.
 
 ## More Information
 

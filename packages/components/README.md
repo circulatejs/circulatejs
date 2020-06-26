@@ -1,6 +1,6 @@
-# CirculateJS - Core
+# CirculateJS - Components
 
-Core package for the CirculateJS project.
+Components package for the CirculateJS project.
 
 ## More Information
 

@@ -1,6 +1,6 @@
-# CirculateJS - Core
+# CirculateJS - Generators
 
-Core package for the CirculateJS project.
+Generators package for the CirculateJS project.
 
 ## More Information
 
