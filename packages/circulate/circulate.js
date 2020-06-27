@@ -1,1 +1,1 @@
-require('@circulatejs/cli');
+require('@circulatejs/cli')
