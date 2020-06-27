@@ -5,5 +5,6 @@ module.exports = {
   singleQuote: true,
   printWidth: 100,
   endOfLine: 'lf',
-  jsxBracketSameLine: true
+  jsxBracketSameLine: true,
+  vueIndentScriptAndStyle: false
 }
