@@ -5,6 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const adminPath = __dirname
 const workingDir = process.cwd()
+const tailwindConfigPath = `${adminPath}/tailwind.config.js`
 
 require('dotenv').config()
 
@@ -44,7 +45,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               indent: 'postcss',
-              plugins: [require('tailwindcss'), require('autoprefixer')]
+              plugins: [require('tailwindcss')(tailwindConfigPath), require('autoprefixer')]
             }
           }
         ]
@@ -68,7 +69,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               indent: 'postcss',
-              plugins: [require('tailwindcss'), require('autoprefixer')]
+              plugins: [require('tailwindcss')(tailwindConfigPath), require('autoprefixer')]
             }
           }
         ]
