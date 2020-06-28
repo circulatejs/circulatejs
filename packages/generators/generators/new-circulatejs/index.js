@@ -31,6 +31,43 @@ module.exports = class extends Generator {
         message: 'Author of the project:'
       },
       {
+        type: 'list',
+        name: 'database',
+        message: 'Database Type:',
+        choices: ['sqlite', 'mysql'],
+        default: 'sqlite'
+      },
+      {
+        type: 'input',
+        name: 'dbName',
+        message: 'Database Name:',
+        default: 'circulatejs'
+      },
+      {
+        type: 'input',
+        name: 'dbHost',
+        message: 'Database Host:',
+        when: (answers) => dbRequiresOptions(answers)
+      },
+      {
+        type: 'input',
+        name: 'dbPort',
+        message: 'Database Port:',
+        when: (answers) => dbRequiresOptions(answers)
+      },
+      {
+        type: 'input',
+        name: 'dbUn',
+        message: 'Database Username:',
+        when: (answers) => dbRequiresOptions(answers)
+      },
+      {
+        type: 'input',
+        name: 'dbPw',
+        message: 'Database Password:',
+        when: (answers) => dbRequiresOptions(answers)
+      },
+      {
         type: 'input',
         name: 'pluginsPath',
         message:
@@ -44,6 +81,10 @@ module.exports = class extends Generator {
         choices: ['Yarn', 'NPM']
       }
     ])
+
+    function dbRequiresOptions(answers) {
+      return answers.database === 'mysql'
+    }
   }
 
   configuring() {
@@ -73,8 +114,15 @@ module.exports = class extends Generator {
       author: this.answers.author
     })
 
+    // Create Environment file
     this.fs.copyTpl(this.templatePath('./_env'), destination + '/.env', {
       pluginsPath: this.answers.pluginsPath,
+      database: this.answers.database,
+      dbName: this.answers.dbName,
+      dbHost: this.answers.dbHost,
+      dbPort: this.answers.dbPort,
+      dbUn: this.answers.dbUn,
+      dbPw: this.answers.dbPw,
       authKey
     })
 
@@ -100,7 +148,7 @@ module.exports = class extends Generator {
 
   end() {
     console.log('')
-    console.log(colors.blue('Your new CirculateJS app created. Have fun!'))
+    console.log(colors.blue('Your new CirculateJS app has been created. Have fun!'))
     console.log('')
   }
 }

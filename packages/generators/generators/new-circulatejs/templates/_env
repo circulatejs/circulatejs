@@ -1,10 +1,19 @@
-HOST = 'localhost'
-PORT = 3000
-DB_NAME = 'circulatejs'
+APP_NAME='CirculateJS'
+HOST='localhost'
+PORT=3000
 
-ADMIN_LOCATION = '/admin'
-API_PATH = '/api'
+DB='<%= database %>'
+DB_NAME='<%= dbName %>'
+<% if (database !== 'sqlite') { %>
+# Optional if using SQLite
+DB_HOST='<%= dbHost %>'
+DB_PORT=<%= dbPort %>
+DB_USER='<%= dbUn %>'
+DB_PASSWORD='<%= dbPw %>',
+<% } %>
+ADMIN_LOCATION='/admin'
+API_PATH='/api'
 
-PLUGINS_PATH = '/<%= pluginsPath %>'
+PLUGINS_PATH='/<%= pluginsPath %>'
 
-AUTH_KEY = '<%= authKey %>'
+AUTH_KEY='<%= authKey %>'
