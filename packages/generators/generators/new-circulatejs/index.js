@@ -83,7 +83,7 @@ module.exports = class extends Generator {
     ])
 
     function dbRequiresOptions(answers) {
-      return answers.database === 'mysql'
+      return answers.database !== 'sqlite'
     }
   }
 
