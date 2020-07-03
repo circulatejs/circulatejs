@@ -21,7 +21,7 @@ if (settings.DB === 'sqlite') {
   }
 }
 
-exports.module = {
+module.exports = {
   plugin: Schwifty,
   options: {
     knex: {

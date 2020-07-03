@@ -26,7 +26,7 @@ const start = async () => {
     validate: require('./app/auth')
   })
 
-  await server.register(database.module)
+  await server.register(database)
 
   server.ext('onPreStart', checkInitialUser, {
     before: '@circulatejs/users',
