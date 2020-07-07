@@ -2,18 +2,30 @@
 
 const glob = require('glob')
 
-module.exports = async (path, server, pluginName) => {
+module.exports = async (path, server) => {
   const controllerPath = glob.sync(`${path}/*`)
-  const controllers = {}
+  const controllersObject = {}
 
   if (controllerPath.length) {
     controllerPath.forEach((controller) => {
       const controllerLoader = require(controller)
-      Object.assign(controllers, controllerLoader)
+      Object.assign(controllersObject, controllerLoader)
     })
   }
 
   if (controllerPath.length) {
-    return await server.decorate('server', `controller.${pluginName}`, controllers)
+    const options = {
+      extend: false
+    }
+    let controllersToAdd = controllersObject
+
+    if (server.controllers) {
+      options.extend = true
+      controllersToAdd = (controllers) => {
+        return { ...controllers, ...controllersObject }
+      }
+    }
+
+    return await server.decorate('server', 'controllers', controllersToAdd, options)
   }
 }

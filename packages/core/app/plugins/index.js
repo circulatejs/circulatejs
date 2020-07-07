@@ -18,15 +18,23 @@ const loadPlugins = async (server) => {
     if (fs.existsSync(manifestPath)) {
       const manifestFile = fs.readFileSync(manifestPath)
       const manifest = JSON.parse(manifestFile)
-      const routes = require(`${pluginPath}/routes`).routes
+      const routesBase = require(`${pluginPath}/routes`)
       const plugin = {}
 
       plugin.name = manifest.name
       plugin.version = manifest.version
 
+      // Load models for the plugin
+      modelLoader(`${pluginPath}/models`, server)
+
+      // Load controllers for the plugin
+      controllerLoader(`${pluginPath}/controllers`, server)
+
       // Build plugin registration here
       plugin.register = async (server) => {
         // server.dependency(manifest.dependencies)
+        const routes = routesBase.routes(server)
+
         routes.admin.forEach((route) => {
           route.path = `${settings.ADMIN_LOCATION}/api${route.path}`
           if (route.options === undefined) {
@@ -46,12 +54,6 @@ const loadPlugins = async (server) => {
         })
       }
 
-      // Load models for the plugin
-      modelLoader(`${pluginPath}/models`, server)
-
-      // Load controllers for the plugin
-      controllerLoader(`${pluginPath}/controllers`, server, plugin.name)
-
       plugins.push(plugin)
     } else {
       console.log(
@@ -67,8 +69,6 @@ const loadPlugins = async (server) => {
       }
     }
   })
-
-  console.log(server)
 
   await server.register(plugins)
 }
