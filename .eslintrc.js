@@ -13,6 +13,7 @@ module.exports = {
   ignorePatterns: [
     '**/.admin/',
     '**/.env',
+    '*.txt',
     '*.md',
     '*.json',
     '*.log',

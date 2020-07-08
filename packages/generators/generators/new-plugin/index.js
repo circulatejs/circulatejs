@@ -74,7 +74,7 @@ module.exports = class extends Generator {
     )
 
     this.fs.copyTpl(
-      this.templatePath('./models/model.js'),
+      this.templatePath('./models/model.txt'),
       this.destinationPath(`${pluginPath}/models/${formattedModelName}.js`),
       {
         modelName: formattedModelName
@@ -82,7 +82,7 @@ module.exports = class extends Generator {
     )
 
     this.fs.copyTpl(
-      this.templatePath('./controllers/controller.js'),
+      this.templatePath('./controllers/controller.txt'),
       this.destinationPath(`${pluginPath}/controllers/${formattedControllerName}.js`),
       {
         controllerName: formattedControllerName
