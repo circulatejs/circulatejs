@@ -13,7 +13,7 @@ const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins')
 const envAdmin = process.env.ADMIN_LOCATION || '/admin'
 const appName = process.env.APP_NAME || 'CirculateJS Admin'
 const adminDevSetting = process.env.ADMIN_DEV || false
-const adminDev = process.env.ENV === 'development' && adminDevSetting === true
+const adminDev = process.env.ENV === 'development' && adminDevSetting
 
 module.exports = {
   mode: process.env.ENV || 'production',
