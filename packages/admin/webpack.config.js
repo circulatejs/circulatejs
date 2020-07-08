@@ -12,7 +12,7 @@ require('dotenv').config()
 const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins')
 const envAdmin = process.env.ADMIN_LOCATION || '/admin'
 const appName = process.env.APP_NAME || 'CirculateJS Admin'
-const adminDevSetting = process.env.ADMIN_DEV || false
+const adminDevSetting = process.env.ADMIN_DEV === 'true' || false
 const adminDev = process.env.ENV === 'development' && adminDevSetting
 
 module.exports = {
