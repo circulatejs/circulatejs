@@ -10,11 +10,6 @@ const cache = {}
 const routes = []
 const $http = axios
 
-// eslint-disable-next-line
-const adminPluginSetting = ADMIN_PLUGINS
-// eslint-disable-next-line
-const adminDevSetting = ADMIN_DEV
-
 const loginPath = '/login'
 
 Vue.use(VueRouter)
@@ -37,7 +32,8 @@ routes.push(defaultRoute)
 routes.push(dashboard)
 routes.push(login)
 
-importAll(require.context(adminPluginSetting, true, /\/routes.js$/))
+// eslint-disable-next-line
+importAll(require.context(ADMIN_PLUGINS, true, /\/adminRoutes.js$/))
 
 function importAll(r) {
   r.keys().forEach((key) => {
@@ -48,11 +44,15 @@ function importAll(r) {
 
 const routerConfig = {
   mode: 'history',
-  base: `${adminPluginSetting}/`,
+  // eslint-disable-next-line
+  base: `${ADMIN_LOCATION}/`,
   routes
 }
 
-if (adminDevSetting) {
+// console.log(ADMIN_DEV)
+
+// eslint-disable-next-line
+if (ADMIN_DEV) {
   delete routerConfig.mode
   delete routerConfig.base
 }
@@ -67,7 +67,8 @@ router.beforeEach((to, from, next) => {
     next()
   } else if (Token) {
     $http
-      .get(`${adminPluginSetting}/api/auth`, {
+      // eslint-disable-next-line
+      .get(`${ADMIN_LOCATION}/api/auth`, {
         headers: { Authorization: Token }
       })
       .then((response) => {

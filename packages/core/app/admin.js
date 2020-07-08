@@ -14,9 +14,7 @@ exports.plugin = {
       path: adminUrl,
       handler: (request, h) => {
         // This needs to be done to make sure the base path forwards properly
-        if (request.path === `/${adminUrl}`) {
-          return h.redirect(`${adminUrl}/`)
-        }
+        return h.redirect(`${request.path}/`)
       }
     })
     await server.route({
