@@ -7,7 +7,6 @@ const createNew = (path) => {
 }
 
 const createPlugin = (path) => {
-  console.log('this ran')
   env.register(require.resolve('./generators/new-plugin'), 'create:plugin')
   env.run('create:plugin', { path })
 }

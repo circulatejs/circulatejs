@@ -1,0 +1,5 @@
+{
+  "name": "<%= pluginName %>",
+  "version": "<%= version %>",
+  "dependencies": []
+}
