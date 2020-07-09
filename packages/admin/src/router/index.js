@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-
 import store from '../store'
-import Dashboard from '../pages/Dashboard.vue'
-import Login from '../pages/Login.vue'
+
+const Dashboard = () => import(/* webpackChunkName: "dashboard" */ '../pages/Dashboard.vue')
+const Login = () => import(/* webpackChunkName: "login" */ '../pages/Login.vue')
 
 const cache = {}
 const routes = []
@@ -14,10 +14,6 @@ const loginPath = '/login'
 
 Vue.use(VueRouter)
 
-const defaultRoute = {
-  path: '*',
-  component: Dashboard
-}
 const dashboard = {
   path: '/',
   menu: 'Dashboard',
@@ -27,10 +23,14 @@ const login = {
   path: '/login',
   component: Login
 }
+const defaultRoute = {
+  path: '*',
+  redirect: '/'
+}
 
-routes.push(defaultRoute)
 routes.push(dashboard)
 routes.push(login)
+routes.push(defaultRoute)
 
 // eslint-disable-next-line
 importAll(require.context(ADMIN_PLUGINS, true, /\/adminRoutes.js$/))

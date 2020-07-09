@@ -33,6 +33,12 @@ module.exports = class extends Generator {
         name: 'controllerName',
         message: 'Your controller name?'
         // default: this.answers.pluginName
+      },
+      {
+        type: 'input',
+        name: 'componentName',
+        message: 'Your Admin component name?'
+        // default: this.answers.pluginName
       }
     ])
   }
@@ -41,9 +47,11 @@ module.exports = class extends Generator {
     const pluginPath = `./${this.options.path}/${this.answers.pluginName}`
     const modelName = this.answers.modelName
     const controllerName = this.answers.controllerName
+    const componentName = this.answers.componentName
 
     let formattedModelName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
     let formattedControllerName = controllerName.charAt(0).toUpperCase() + controllerName.slice(1)
+    let formattedcomponentName = componentName.charAt(0).toUpperCase() + componentName.slice(1)
 
     if (!formattedModelName) {
       formattedModelName = 'Model'
@@ -53,6 +61,10 @@ module.exports = class extends Generator {
       formattedControllerName = 'Controller'
     } else {
       formattedControllerName = formattedControllerName + 'Controller'
+    }
+
+    if (!formattedcomponentName) {
+      formattedcomponentName = 'Component'
     }
 
     this.fs.copyTpl(
@@ -86,6 +98,23 @@ module.exports = class extends Generator {
       this.destinationPath(`${pluginPath}/controllers/${formattedControllerName}.js`),
       {
         controllerName: formattedControllerName
+      }
+    )
+
+    this.fs.copyTpl(
+      this.templatePath('./admin/Component.vue'),
+      this.destinationPath(`${pluginPath}/admin/${formattedcomponentName}.vue`),
+      {
+        componentName: formattedcomponentName
+      }
+    )
+    this.fs.copyTpl(
+      this.templatePath('./admin/adminRoutes.txt'),
+      this.destinationPath(`${pluginPath}/admin/adminRoutes.js`),
+      {
+        path: componentName.toLowerCase(),
+        webpackChunkName: componentName.toLowerCase(),
+        componentName: formattedcomponentName
       }
     )
   }
