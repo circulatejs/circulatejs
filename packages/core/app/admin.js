@@ -59,6 +59,9 @@ exports.plugin = {
       return h.continue
     })
 
-    await admin.buildAdmin()
+    // Check to see if there is a no admin flag to build it.
+    if (process.argv[2] !== '--no-admin') {
+      await admin.buildAdmin()
+    }
   }
 }
