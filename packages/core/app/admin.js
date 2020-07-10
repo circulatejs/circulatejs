@@ -36,7 +36,10 @@ exports.plugin = {
       path: `${adminUrl}/api/auth`,
       handler: async (request, h) => {
         if (request.auth.isAuthenticated) {
-          return await h.response({ adminAccess: true })
+          return await h.response({
+            adminAccess: true,
+            userData: { name: request.auth.credentials.name }
+          })
         } else {
           return await h.response({ adminAccess: false })
         }

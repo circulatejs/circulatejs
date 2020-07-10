@@ -18,8 +18,6 @@ const adminDev = process.env.ENV === 'development' && adminDevSetting
 
 const tablerIcons = require.resolve('tabler-icons/tabler-sprite.svg')
 
-console.log(tailwindConfigPath)
-
 module.exports = {
   mode: process.env.ENV || 'production',
   entry: `${adminPath}/src/main.js`,

@@ -16,22 +16,12 @@ exports.plugin = {
       handler: async (request, h) => {
         const { User } = server.models()
         const { username, password } = request.payload
-
-        const user = await User.query()
-          .findOne({
-            username: username
-          })
-          .then((userData) => {
-            return userData
-          })
-          .catch((err) => {
-            return err
-          })
+        const user = await User.query().findOne({ username })
 
         if (user) {
           const passwordMatch = await bcrypt.compare(password, user.password)
           if (passwordMatch) {
-            const token = await jwt.sign(username, settings.AUTH_KEY)
+            const token = jwt.sign({ username, name: user.name }, settings.AUTH_KEY)
             return { auth: true, token }
           } else {
             return {

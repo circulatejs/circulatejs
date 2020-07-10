@@ -75,6 +75,7 @@ router.beforeEach((to, from, next) => {
       .then((response) => {
         if (response.data.adminAccess) {
           store.commit('setAuth', response.data.adminAccess)
+          store.commit('setUser', response.data.userData.name)
           next()
         } else {
           next(loginPath)
