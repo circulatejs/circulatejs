@@ -52,8 +52,6 @@
 </template>
 
 <script>
-// import resolveConfig from 'tailwindcss/resolveConfig'
-// import tailwindConfig from `${__dirname}/tailwind.config.js`
 import UserMenu from './UserMenu.vue'
 import MenuLink from './MenuLink.vue'
 import { cButton, cIcon } from '@circulatejs/ui'

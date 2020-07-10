@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const adminPath = __dirname
 const workingDir = process.cwd()
@@ -23,7 +24,7 @@ module.exports = {
   entry: `${adminPath}/src/main.js`,
   output: {
     path: `${workingDir}/.admin`,
-    filename: 'admin.js'
+    filename: 'js/admin.js'
   },
   stats: {
     assets: false
@@ -90,12 +91,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [{ from: tablerIcons, to: 'svg' }]
     }),
     new HtmlWebpackPlugin({
-      template: `${adminPath}/src/index.html`,
-      alwaysWriteToDisk: true
+      template: `${adminPath}/src/index.html`
     }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
