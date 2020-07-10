@@ -30,7 +30,11 @@ export default {
   width: 100vw;
 }
 .content {
-  width: calc(100vw - 300px);
+  width: 100vw;
   padding: 65px 15px 15px;
+}
+
+@screen md {
+  width: calc(100vw - 300px);
 }
 </style>

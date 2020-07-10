@@ -1,12 +1,16 @@
 <template>
-  <div v-show="!pending" class="flex justify-center">
-    <div class="flex flex-col p-4 mt-16 bg-white rounded-lg shadow-lg sm:w-4/12 w-full">
+  <div v-show="!pending" class="flex justify-center p-3">
+    <div
+      class="flex flex-col p-4 mt-16 bg-white rounded-lg shadow-lg sm:w-4/12 md:x-1/2 w-full max-w-sm"
+    >
       <form @submit.prevent="submit" class="flex flex-col">
         <c-input v-model.trim="auth.username" type="text" placeholder="Username"></c-input>
         <c-input v-model.trim="auth.password" type="password" placeholder="Password"></c-input>
-        <button type="submit">
-          Sign In
-        </button>
+        <c-button type="submit">
+          <template>
+            Sign In
+          </template>
+        </c-button>
       </form>
       <p>{{ error }}</p>
     </div>
@@ -14,11 +18,11 @@
 </template>
 
 <script>
-import { cInput } from '@circulatejs/components'
+import { cInput, cButton } from '@circulatejs/ui'
 
 export default {
   name: 'Login',
-  components: { cInput },
+  components: { cInput, cButton },
   data() {
     return {
       auth: {

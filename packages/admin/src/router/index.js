@@ -3,9 +3,6 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 import store from '../store'
 
-const Dashboard = () => import(/* webpackChunkName: "dashboard" */ '../pages/Dashboard.vue')
-const Login = () => import(/* webpackChunkName: "login" */ '../pages/Login.vue')
-
 const cache = {}
 const routes = []
 const $http = axios
@@ -16,12 +13,15 @@ Vue.use(VueRouter)
 
 const dashboard = {
   path: '/',
-  menu: 'Dashboard',
-  component: Dashboard
+  component: () => import(/* webpackChunkName: "dashboard" */ '../pages/Dashboard.vue')
+}
+const users = {
+  path: '/users',
+  component: () => import(/* webpackChunkName: "users" */ '../pages/Users.vue')
 }
 const login = {
   path: '/login',
-  component: Login
+  component: () => import(/* webpackChunkName: "login" */ '../pages/Login.vue')
 }
 const defaultRoute = {
   path: '*',
@@ -29,6 +29,7 @@ const defaultRoute = {
 }
 
 routes.push(dashboard)
+routes.push(users)
 routes.push(login)
 routes.push(defaultRoute)
 

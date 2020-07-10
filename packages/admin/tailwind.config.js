@@ -12,6 +12,9 @@ module.exports = {
         c: {
           blue: '#2361d3'
         }
+      },
+      boxShadow: {
+        menu: '5px 0 8px 0px rgba(0, 0, 0, 0.25)'
       }
     }
   },
