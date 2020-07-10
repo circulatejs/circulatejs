@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const adminPath = __dirname
 const workingDir = process.cwd()
@@ -14,6 +15,10 @@ const envAdmin = process.env.ADMIN_LOCATION || '/admin'
 const appName = process.env.APP_NAME || 'CirculateJS Admin'
 const adminDevSetting = process.env.ADMIN_DEV === 'true' || false
 const adminDev = process.env.ENV === 'development' && adminDevSetting
+
+const tablerIcons = require.resolve('tabler-icons/tabler-sprite.svg')
+
+console.log(tailwindConfigPath)
 
 module.exports = {
   mode: process.env.ENV || 'production',
@@ -87,6 +92,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: tablerIcons, to: 'svg' }]
+    }),
     new HtmlWebpackPlugin({
       template: `${adminPath}/src/index.html`,
       alwaysWriteToDisk: true
@@ -96,7 +104,8 @@ module.exports = {
       ADMIN_PLUGINS: JSON.stringify(pluginsPath),
       ADMIN_LOCATION: JSON.stringify(envAdmin),
       APP_NAME: JSON.stringify(appName),
-      ADMIN_DEV: JSON.stringify(adminDev)
+      ADMIN_DEV: JSON.stringify(adminDev),
+      SCREEN_SIZES: JSON.stringify(require(tailwindConfigPath).theme.screens)
     })
   ],
   devServer: {

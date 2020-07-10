@@ -12,7 +12,7 @@
     "license": "ISC",
     "dependencies": {
         "@circulatejs/cli": "^0.1.11",
-        "@circulatejs/components": "^0.1.11",
+        "@circulatejs/ui": "^0.1.11",
         "@circulatejs/core": "^0.1.11"
     },
     "devDependencies": {
