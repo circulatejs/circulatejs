@@ -3,7 +3,7 @@
     <p class="inline-flex pr-2 text-gray-800">{{ getUser }}</p>
     <c-button @click.native="openMenu" class="relative user-icon">
       <template>
-        <c-icon :height="32" :width="32" name="user" class="user-icon-img"></c-icon>
+        <c-icon :height="30" :width="30" name="user" class="user-icon-img"></c-icon>
       </template>
     </c-button>
     <transition name="menu">
@@ -63,7 +63,7 @@ export default {
 }
 .user-icon-img {
   position: absolute;
-  top: 6px;
+  top: 7px;
   left: 7px;
 }
 .right-nav {

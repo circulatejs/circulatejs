@@ -1,6 +1,6 @@
 <template>
   <div class="menu" v-if="showMenu">
-    <div class="upper-menu">
+    <div class="upper-menu fixed inline-flex top-0">
       <div class="left-side">
         <c-button
           type="button"
@@ -37,11 +37,22 @@
             alt="CirculateJS Admin Logo"
           />
         </div>
-        <menu-link menu="Dashboard" path="/" icon="layout-2"></menu-link>
-        <menu-link menu="Users" path="/users" icon="user"></menu-link>
+        <menu-link
+          @click.native="closeMobileMenu"
+          menu="Dashboard"
+          path="/"
+          icon="layout-2"
+        ></menu-link>
+        <menu-link
+          @click.native="closeMobileMenu"
+          menu="Users"
+          path="/users"
+          icon="users"
+        ></menu-link>
         <div class="p-4"></div>
         <menu-link
           v-for="(menuItem, index) in menuItems"
+          @click.native="closeMobileMenu"
           :key="menuItem.menu + '-' + index"
           :menu="menuItem.menu"
           :path="menuItem.path"
@@ -99,6 +110,13 @@ export default {
     setMobileMenu() {
       this.menuActive = !this.menuActive
     },
+    closeMobileMenu() {
+      const mm = window.matchMedia(`(min-width: ${SCREEN_SIZES.md})`)
+      // eslint-disable-next-line
+      if (!mm.matches) {
+        this.setMobileMenu()
+      }
+    },
     menuListener(e) {
       if (e.matches) {
         this.menuActive = true
@@ -123,15 +141,13 @@ export default {
   height: 100vh;
   padding: 15px;
   color: white;
+  z-index: 100;
 }
 .logo__wrap {
   padding: 0 30px 30px;
   text-align: center;
 }
 .upper-menu {
-  position: fixed;
-  display: inline-flex;
-  top: 0;
   height: 55px;
   padding: 5px;
   width: 100%;
