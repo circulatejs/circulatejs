@@ -15,3 +15,9 @@ new Vue({
   store,
   render: (h) => h(App)
 }).$mount('#admin')
+
+// Add a request interceptor
+axios.interceptors.request.use((config) => {
+  config.headers.Authorization = localStorage.getItem('Token')
+  return config
+})
