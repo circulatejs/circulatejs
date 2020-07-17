@@ -8,6 +8,7 @@
       @input="$emit('input', $event.target.value)"
       class="input"
       :type="type"
+      :value="value"
     />
   </div>
 </template>
@@ -35,9 +36,17 @@ export default {
       this.label = true
     },
     unsetLabel() {
-      if (this.$refs.input.value.length > 0) {
-      } else {
+      if (this.$refs.input.value.length <= 0) {
         this.label = false
+      }
+    }
+  },
+  watch: {
+    value(val) {
+      if (val.length > 0) {
+        this.label = true
+      } else {
+        this.setLabel()
       }
     }
   }
