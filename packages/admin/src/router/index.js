@@ -19,6 +19,20 @@ const users = {
   path: '/users',
   component: () => import(/* webpackChunkName: "users" */ '../pages/Users.vue')
 }
+const userAdd = {
+  path: '/users/add',
+  component: () => import(/* webpackChunkName: "users" */ '../pages/User.vue'),
+  meta: {
+    editUser: false
+  }
+}
+const userEdit = {
+  path: '/users/:id',
+  component: () => import(/* webpackChunkName: "users" */ '../pages/User.vue'),
+  meta: {
+    editUser: true
+  }
+}
 const login = {
   path: '/login',
   component: () => import(/* webpackChunkName: "login" */ '../pages/Login.vue')
@@ -30,10 +44,11 @@ const defaultRoute = {
 
 routes.push(dashboard)
 routes.push(users)
+routes.push(userAdd)
+routes.push(userEdit)
 routes.push(login)
 routes.push(defaultRoute)
 
-// eslint-disable-next-line
 importAll(require.context(ADMIN_PLUGINS, true, /\/adminRoutes.js$/))
 
 function importAll(r) {
@@ -45,14 +60,10 @@ function importAll(r) {
 
 const routerConfig = {
   mode: 'history',
-  // eslint-disable-next-line
   base: `${ADMIN_LOCATION}/`,
   routes
 }
 
-// console.log(ADMIN_DEV)
-
-// eslint-disable-next-line
 if (ADMIN_DEV) {
   delete routerConfig.mode
   delete routerConfig.base
@@ -68,7 +79,6 @@ router.beforeEach((to, from, next) => {
     next()
   } else if (Token) {
     $http
-      // eslint-disable-next-line
       .get(`${ADMIN_LOCATION}/api/auth`, {
         headers: { Authorization: Token }
       })

@@ -74,5 +74,64 @@ exports.plugin = {
         auth: 'jwt'
       }
     })
+
+    // Get all users
+    await server.route({
+      method: 'GET',
+      path: `${settings.ADMIN_LOCATION}/api/users`,
+      handler: async (request, h) => {
+        const { User } = server.models()
+        const users = await User.query().select('id', 'name', 'email')
+
+        return await h.response({ users })
+      },
+      options: {
+        auth: 'jwt'
+      }
+    })
+
+    // Get single user
+    await server.route({
+      method: 'GET',
+      path: `${settings.ADMIN_LOCATION}/api/user/{id}`,
+      handler: async (request, h) => {
+        const { User } = server.models()
+        const id = request.params.id
+        const user = await User.query().findById(id).select('username', 'name', 'email')
+
+        return await h.response({ user })
+      },
+      options: {
+        auth: 'jwt'
+      }
+    })
+
+    // Remove single user
+    await server.route({
+      method: 'DELETE',
+      path: `${settings.ADMIN_LOCATION}/api/user/remove/{id}`,
+      handler: async (request, h) => {
+        const { User } = server.models()
+        const id = request.params.id
+        const removed = {
+          message: '',
+          error: false
+        }
+
+        const removeUser = await User.query().deleteById(id)
+
+        if (removeUser === 1) {
+          removed.message = 'User has been removed'
+        } else {
+          removed.message = 'There was an error removing the user'
+          removed.error = true
+        }
+
+        return await h.response(removed)
+      },
+      options: {
+        auth: 'jwt'
+      }
+    })
   }
 }
