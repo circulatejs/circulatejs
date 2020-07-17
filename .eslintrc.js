@@ -5,6 +5,12 @@ module.exports = {
     es2020: true,
     node: true
   },
+  globals: {
+    ADMIN_PLUGINS: 'readonly',
+    ADMIN_LOCATION: 'readonly',
+    ADMIN_DEV: 'readonly',
+    SCREEN_SIZES: 'readonly'
+  },
   extends: ['plugin:vue/essential', 'standard', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 11
