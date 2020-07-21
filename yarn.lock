@@ -9875,10 +9875,10 @@ schema-utils@^2.7.0:
     ajv "^6.12.2"
     ajv-keywords "^3.4.1"
 
-schwifty@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/schwifty/-/schwifty-5.2.1.tgz#70fdf84f57a217e6500c9c3080e14e908c44b879"
-  integrity sha512-ZV607BBpKE3nWlfwmQnJAeMOh+y1S4RyRsH85/6TScMg6gdfGlf39saPg+4SCz8RCPwvzcQBQprpKIIQ8Jkybg==
+schwifty@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/schwifty/-/schwifty-5.3.0.tgz#e45de9de6843745acf7b6c69430ca6dbe1f4a368"
+  integrity sha512-Pcox6X90kvK15rHWqZPY9IPJ06k8TgFmtAxszhfUOW5F+qPfxsuo5DaTaF74QaPkHrmKHfrMe2s1ceKvr9R/sA==
   dependencies:
     "@hapi/hoek" "8.x.x"
     "@hapi/joi" "16.x.x"
