@@ -15,6 +15,12 @@ body {
     overflow: hidden;
     min-width: 320px;
 }
+p {
+  @apply p-1;
+}
+a {
+  @apply text-blue-600;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -47,4 +53,17 @@ td {
 }
 .error {
   @apply text-red-600;
+}
+.heading {
+  @apply font-bold mb-4;
+  font-size: 1.6rem;
+}
+.card-half {
+  @apply bg-white rounded-md shadow-sm p-4 w-full;
+}
+
+@screen sm {
+  .card-half {
+    @apply w-1/2;
+  }
 }

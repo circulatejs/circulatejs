@@ -1,6 +1,6 @@
 <template>
   <table>
-    <thead class="heading" colspan="4">
+    <thead class="table-heading" colspan="4">
       <tr>
         <th v-for="heading in headings" :key="heading">{{ capitalizeHeading(heading) }}</th>
         <th v-if="hasControlsSlot"></th>
@@ -44,9 +44,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-/* .heading {
-  @apply bg-gray-100;
-} */
-</style>

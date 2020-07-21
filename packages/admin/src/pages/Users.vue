@@ -1,6 +1,6 @@
 <template>
   <div class="users">
-    <h1>Users</h1>
+    <h1 class="heading">Users</h1>
     <div class="controls">
       <c-button @click.native="addUser">Add User</c-button>
     </div>
