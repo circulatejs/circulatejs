@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
 const Schwifty = require('schwifty')
 
 const User = async (server) => {
@@ -14,7 +14,8 @@ const User = async (server) => {
           name: Joi.string(),
           email: Joi.string().email(),
           username: Joi.string(),
-          password: Joi.string()
+          password: Joi.string(),
+          picture: Joi.string()
         })
       }
 
@@ -36,6 +37,7 @@ const User = async (server) => {
           table.string('email').unique().notNullable()
           table.string('username').unique().notNullable()
           table.string('password').notNullable()
+          table.string('picture')
         })
         .then(() => {
           console.log('Successfully created User table.')
