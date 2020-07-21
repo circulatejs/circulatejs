@@ -98,6 +98,7 @@ module.exports = class extends Generator {
   writing() {
     const destination = this.destinationPath(this.options.path)
     const authKey = crypto.randomBytes(256).toString('base64')
+    const pkgJson = {}
 
     this.fs.copy(this.templatePath('bootstrap.js'), destination + '/bootstrap.js')
 
@@ -134,6 +135,16 @@ module.exports = class extends Generator {
         pluginsPath: this.answers.pluginsPath
       }
     )
+
+    // Run additional dependencies
+    if (this.answers.database === 'mysql') {
+      pkgJson.dependencies = {
+        mysql2: 'latest'
+      }
+    }
+
+    // Extend or create package.json file in destination path
+    this.fs.extendJSON(destination + '/package.json', pkgJson)
   }
 
   async install() {
