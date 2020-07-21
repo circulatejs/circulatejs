@@ -44,7 +44,9 @@ npm run lint
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning.
+We will use [SemVer](http://semver.org/) for versioning when we hit a 1.0.0 release.
+
+Before we hit the 1.0.0 version milestone, every new version release should be considered a breaking change. We will document any breaking changes.
 
 ## Author
 
