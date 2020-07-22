@@ -10,8 +10,8 @@
     "author": "<%= author %>",
     "license": "MIT",
     "dependencies": {
-        "@circulatejs/core": "^0.1.11",
-        "@circulatejs/cli": "^0.1.11"
+        "@circulatejs/core": "^0.1.12",
+        "@circulatejs/cli": "^0.1.12"
     },
     "devDependencies": {
         "nodemon": "^2.0.2"
