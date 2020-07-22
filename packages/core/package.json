@@ -1,6 +1,6 @@
 {
     "name": "@circulatejs/core",
-    "version": "0.1.11",
+    "version": "0.1.12",
     "description": "CirculateJS Core",
     "main": "index.js",
     "bin": {
@@ -14,11 +14,10 @@
     "author": "Greg Patrick",
     "license": "ISC",
     "dependencies": {
-        "@circulatejs/admin": "^0.1.11",
+        "@circulatejs/admin": "^0.1.12",
         "@hapi/boom": "^9.1.0",
         "@hapi/hapi": "^19.1.0",
         "@hapi/inert": "^6.0.1",
-        "joi": "^17.1.1",
         "bcrypt": "^5.0.0",
         "colors": "^1.4.0",
         "dotenv": "^8.2.0",
@@ -26,6 +25,7 @@
         "glob": "^7.1.6",
         "hapi-auth-jwt2": "^10.1.0",
         "inquirer": "^7.2.0",
+        "joi": "^17.1.1",
         "jsonwebtoken": "^8.5.1",
         "knex": "^0.20.8",
         "objection": "^2.1.2",
