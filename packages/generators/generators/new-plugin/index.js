@@ -26,19 +26,16 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'modelName',
         message: 'Your Model name?'
-        // default: this.answers.pluginName
       },
       {
         type: 'input',
         name: 'controllerName',
         message: 'Your controller name?'
-        // default: this.answers.pluginName
       },
       {
         type: 'input',
         name: 'componentName',
         message: 'Your Admin component name?'
-        // default: this.answers.pluginName
       }
     ])
   }
