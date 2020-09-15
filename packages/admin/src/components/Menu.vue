@@ -56,6 +56,7 @@
           :key="menuItem.menu + '-' + index"
           :menu="menuItem.menu"
           :path="menuItem.path"
+          :icon="menuItem.icon"
         ></menu-link>
       </nav>
     </transition>
