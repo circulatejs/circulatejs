@@ -12,6 +12,7 @@ module.exports = async (server) => {
 
       static get joiSchema() {
         return Joi.object({
+          id: Joi.number()
           // Joi schema goes here
         })
       }

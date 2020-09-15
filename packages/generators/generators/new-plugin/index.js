@@ -25,17 +25,20 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'modelName',
-        message: 'Your Model name?'
+        message: 'Your Model name?',
+        default: 'Model'
       },
       {
         type: 'input',
         name: 'controllerName',
-        message: 'Your controller name?'
+        message: 'Your Controller name?',
+        default: 'Controller'
       },
       {
         type: 'input',
         name: 'componentName',
-        message: 'Your Admin component name?'
+        message: 'Your Admin component name?',
+        default: 'Component'
       }
     ])
   }
