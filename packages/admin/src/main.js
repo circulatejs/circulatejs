@@ -6,6 +6,7 @@ import store from './store/index.js'
 
 // Load in the styling
 import '../src/assets/css/base.css'
+import '../src/assets/css/quill.snow.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios

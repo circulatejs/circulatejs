@@ -4,7 +4,6 @@
 
 <script>
 import Quill from 'quill'
-import '../../../node_modules/quill/dist/quill.snow.css'
 
 export default {
   name: 'c-rich-text',
