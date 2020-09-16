@@ -11,7 +11,7 @@ const tailwindConfigPath = `${adminPath}/tailwind.config.js`
 
 require('dotenv').config()
 
-const pluginsPath = path.join(__dirname, '..', 'circulate', 'plugins')
+const pluginsPath = `${workingDir}/${process.env.PLUGINS_PATH}` || `${workingDir}/plugins`
 const envAdmin = process.env.ADMIN_LOCATION || '/admin'
 const appName = process.env.APP_NAME || 'CirculateJS Admin'
 const adminDevSetting = process.env.ADMIN_DEV === 'true' || false
