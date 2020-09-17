@@ -1,5 +1,7 @@
-export default {
-  path: '/<%= path %>',
-  menu: '<%= componentName %>',
-  component: () => import(/* webpackChunkName: "<%= webpackChunkName %>" */ './<%= componentName %>.vue')
-}
+export default [
+  {
+    path: '/<%= path %>',
+    menu: '<%= componentName %>',
+    component: () => import(/* webpackChunkName: "<%= webpackChunkName %>" */ './<%= componentName %>.vue')
+  }
+]

@@ -49,14 +49,8 @@ routes.push(userEdit)
 routes.push(login)
 routes.push(defaultRoute)
 
+// This imports all the routes from plugins
 importAll(require.context(ADMIN_PLUGINS, true, /\/adminRoutes.js$/))
-
-function importAll(r) {
-  r.keys().forEach((key) => {
-    cache[key] = r(key)
-    routes.push(cache[key].default)
-  })
-}
 
 const routerConfig = {
   mode: 'history',
@@ -99,5 +93,15 @@ router.beforeEach((to, from, next) => {
     next(loginPath)
   }
 })
+
+// Function to get all the available routes within a plugin
+function importAll(r) {
+  r.keys().forEach((key) => {
+    cache[key] = r(key)
+    cache[key].default.forEach((route) => {
+      routes.push(route)
+    })
+  })
+}
 
 export default router
