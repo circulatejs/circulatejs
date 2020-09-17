@@ -31,7 +31,9 @@ export default {
 }
 .content {
   width: 100vw;
-  padding: 65px 15px 15px;
+  margin-top: 55px;
+  padding: 10px 15px 15px;
+  overflow-x: auto;
 }
 
 @screen md {

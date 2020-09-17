@@ -154,6 +154,7 @@ export default {
   width: 100%;
   background: white;
   border-bottom: 1px solid #ccc;
+  z-index: 99;
 }
 .left-side {
   display: flex;
