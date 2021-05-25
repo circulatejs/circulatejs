@@ -1,10 +1,10 @@
 const Joi = require('joi')
-const Schwifty = require('schwifty')
+const Schwifty = require('@hapipal/schwifty')
 
 module.exports = async (server) => {
   const knex = server.knex()
 
-  server.schwifty(
+  server.registerModel(
     class <%= modelName %> extends Schwifty.Model {
       static get tableName() {
         return '<%= modelName %>'

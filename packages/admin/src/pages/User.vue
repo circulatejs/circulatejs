@@ -1,6 +1,6 @@
 <template>
   <div class="users">
-    <h1>User</h1>
+    <h1 class="heading">User</h1>
     <form @submit.prevent="handleSubmit">
       <c-input v-model.trim="user.username" type="text" placeholder="Username"></c-input>
       <c-input v-model="user.name" type="text" placeholder="Name"></c-input>

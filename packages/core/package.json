@@ -16,8 +16,9 @@
     "dependencies": {
         "@circulatejs/admin": "^0.1.17",
         "@hapi/boom": "^9.1.0",
-        "@hapi/hapi": "^19.1.0",
+        "@hapi/hapi": "^20.1.3",
         "@hapi/inert": "^6.0.1",
+        "@hapipal/schwifty": "^6.0.0",
         "bcrypt": "^5.0.0",
         "colors": "^1.4.0",
         "dotenv": "^8.2.0",
@@ -31,7 +32,6 @@
         "knex": "^0.20.8",
         "objection": "^2.1.2",
         "prettier": "2.1.1",
-        "schwifty": "^5.4.0",
         "sqlite3": "^4.1.1"
     },
     "devDependencies": {

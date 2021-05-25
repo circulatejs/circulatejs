@@ -1,8 +1,8 @@
 const Joi = require('joi')
-const Schwifty = require('schwifty')
+const Schwifty = require('@hapipal/schwifty')
 
 const User = async (server) => {
-  server.schwifty(
+  server.registerModel(
     class User extends Schwifty.Model {
       static get tableName() {
         return 'User'

@@ -1,4 +1,4 @@
-const Schwifty = require('schwifty')
+const Schwifty = require('@hapipal/schwifty')
 
 const settings = require('./settings')
 
