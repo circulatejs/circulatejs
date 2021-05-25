@@ -1,6 +1,6 @@
 # CirculateJS
 
-A fully customizable scafolding framework for building websites, CMS's and API's.
+A fully customizable scaffolding framework for building websites, CMSs and APIs.
 
 ## Getting Started
 
