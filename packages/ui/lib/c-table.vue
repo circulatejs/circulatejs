@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'c-icon',
+  name: 'c-table',
   props: {
     headings: {
       type: Array,

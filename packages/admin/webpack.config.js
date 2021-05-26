@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -16,7 +17,14 @@ const appName = process.env.APP_NAME || 'CirculateJS Admin'
 const adminDevSetting = process.env.ADMIN_DEV === 'true' || false
 const adminDev = process.env.ENV === 'development' && adminDevSetting
 
-const tablerIcons = require.resolve('tabler-icons/tabler-sprite.svg')
+// Get the Tabler Icon sprite sheet based on the Tabler module.
+const tablerIcons = path.resolve(
+  require.resolve('@tabler/icons'),
+  '..',
+  '..',
+  '..',
+  'tabler-sprite.svg'
+)
 
 module.exports = {
   mode: process.env.ENV || 'production',
