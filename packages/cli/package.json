@@ -1,6 +1,6 @@
 {
   "name": "@circulatejs/cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CirculateJS CLI",
   "main": "circulate.js",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "circulate": "./circulate.js"
   },
   "dependencies": {
-    "@circulatejs/generators": "^0.2.0",
+    "@circulatejs/generators": "^0.2.1",
     "commander": "^5.1.0",
     "dotenv": "^8.2.0"
   }
