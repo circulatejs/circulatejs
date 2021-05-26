@@ -1,12 +1,12 @@
 {
   "name": "@circulatejs/admin",
-  "version": "0.1.17",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@circulatejs/ui": "^0.1.17",
+    "@circulatejs/ui": "^0.2.0",
     "@tabler/icons": "^1.41.2",
     "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
