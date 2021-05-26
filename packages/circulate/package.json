@@ -1,6 +1,6 @@
 {
     "name": "@circulatejs/circulate",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "",
     "main": "bootstrap.js",
     "scripts": {
@@ -12,7 +12,7 @@
     "license": "ISC",
     "dependencies": {
         "@circulatejs/cli": "^0.2.1",
-        "@circulatejs/core": "^0.2.0",
+        "@circulatejs/core": "^0.2.2",
         "@circulatejs/ui": "^0.2.0"
     },
     "devDependencies": {
