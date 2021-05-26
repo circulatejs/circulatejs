@@ -1,6 +1,6 @@
 {
     "name": "@circulatejs/core",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "description": "CirculateJS Core",
     "main": "index.js",
     "bin": {
