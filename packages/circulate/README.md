@@ -1,6 +1,6 @@
 # CirculateJS - Circulate
 
-This is the testing package for CirculateJS, used as the scaffolding for bringing everthing together.  This is not intended on being used for anything.
+This is the testing package for CirculateJS, used as the scaffolding for bringing everything together.  This is not intended on being used for anything.
 
 ## More Information
 

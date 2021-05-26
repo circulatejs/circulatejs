@@ -32,7 +32,8 @@ const loadPlugins = async (server) => {
 
       // Build plugin registration here
       plugin.register = async (server) => {
-        // server.dependency(manifest.dependencies)
+        // Check for dependencies first before registering the plugin
+        server.dependency(manifest.dependencies)
         const routes = routesBase.routes(server)
 
         routes.admin.forEach((route) => {
