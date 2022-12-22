@@ -28,7 +28,7 @@
         "hapi-auth-jwt2": "^10.1.0",
         "inquirer": "^7.2.0",
         "joi": "^17.1.1",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "knex": "^0.21.17",
         "objection": "^2.2.13",
         "prettier": "2.1.1",
